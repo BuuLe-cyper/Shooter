@@ -20,7 +20,6 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-      //  animator = GetComponent<Animator>();
 
         rb.freezeRotation = true;
     }
@@ -52,7 +51,7 @@ public class PlayerMove : MonoBehaviour
     // Handle rolling action
     private void HandleRoll()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && rollCooldown <= 0)
+        if (Input.GetKeyDown(KeyCode.Space) && rollCooldown <= 0)
         {
             StartRoll();
         }
@@ -85,7 +84,7 @@ public class PlayerMove : MonoBehaviour
     // Handle flash movement (teleport forward)
     private void HandleFlash()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Vector2 flashDirection = moveInput.normalized;
             if (flashDirection == Vector2.zero)
