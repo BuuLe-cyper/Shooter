@@ -13,13 +13,14 @@ public class PlayerMove : MonoBehaviour
     private float rollCooldown;
     private bool isRolling = false;
     private Rigidbody2D rb;
-    private Animator animator;
+    public Animator animator;
     private Vector2 moveInput;
+    public SpriteRenderer charSR;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+      //  animator = GetComponent<Animator>();
 
         rb.freezeRotation = true;
     }
@@ -43,15 +44,15 @@ public class PlayerMove : MonoBehaviour
 
         if (moveInput.x != 0)
         {
-            Vector3 currentScale = transform.localScale;
-            transform.localScale = new Vector3(Mathf.Sign(moveInput.x) * Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
+            Vector3 currentScale = charSR.transform.localScale;
+            charSR.transform.localScale = new Vector3(Mathf.Sign(moveInput.x) * Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
         }
     }
 
     // Handle rolling action
     private void HandleRoll()
     {
-        if (Input.GetKeyDown(KeyCode.J) && rollCooldown <= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && rollCooldown <= 0)
         {
             StartRoll();
         }
@@ -84,7 +85,7 @@ public class PlayerMove : MonoBehaviour
     // Handle flash movement (teleport forward)
     private void HandleFlash()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Vector2 flashDirection = moveInput.normalized;
             if (flashDirection == Vector2.zero)
