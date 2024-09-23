@@ -17,11 +17,18 @@ public class PlayerMove : MonoBehaviour
     private Vector2 moveInput;
     public SpriteRenderer charSR;
 
+    private float flashCooldown;  // Tracks flash cooldown time
+    private float flashCooldownTime = 10f;
+    public string flashCooldownText;  // Reference to the UI Text to show cooldown
+
+    // Add a reference to the Abilities script
+    public Abilities abilities;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         rb.freezeRotation = true;
+        this.flashCooldown = 0;
     }
 
     private void Update()
@@ -29,6 +36,10 @@ public class PlayerMove : MonoBehaviour
         HandleMovement();
         HandleRoll();
         HandleFlash();
+
+        // Update the flash cooldown UI
+        UpdateFlashCooldownUI();
+
     }
 
     // Handle basic movement and animation
@@ -84,15 +95,20 @@ public class PlayerMove : MonoBehaviour
     // Handle flash movement (teleport forward)
     private void HandleFlash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && this.flashCooldown <= 0)
         {
             Vector2 flashDirection = moveInput.normalized;
             if (flashDirection == Vector2.zero)
             {
                 flashDirection = Vector2.right * Mathf.Sign(transform.localScale.x);
             }
-
+            this.flashCooldown = this.flashCooldownTime;
             rb.MovePosition(rb.position + flashDirection * flashDistance);
+        }
+
+        if (flashCooldown > 0)
+        {
+            this.flashCooldown -= Time.deltaTime;
         }
     }
 
@@ -102,6 +118,19 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.name.Contains("RockGroup"))
         {
             rb.velocity = Vector2.zero;
+        }
+    }
+
+    // Update the flash cooldown UI text
+    private void UpdateFlashCooldownUI()
+    {
+        if (flashCooldown > 0)
+        {
+            flashCooldownText = "Flash Cooldown: " + Mathf.Ceil(flashCooldown).ToString() + "s";
+        }
+        else
+        {
+            flashCooldownText = "Flash Ready!";
         }
     }
 }
