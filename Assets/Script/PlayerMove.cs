@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -115,12 +115,11 @@ public class PlayerMove : MonoBehaviour
     // Stop movement and prevent rotation upon collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Contains("RockGroup"))
+        if (collision.gameObject.CompareTag("ObjectNoGo") || collision.gameObject.CompareTag("Floor")) 
         {
-            rb.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero; 
         }
     }
-
     // Update the flash cooldown UI text
     private void UpdateFlashCooldownUI()
     {
