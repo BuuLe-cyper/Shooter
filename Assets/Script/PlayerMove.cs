@@ -37,9 +37,11 @@ public class PlayerMove : MonoBehaviour
         HandleRoll();
         HandleFlash();
 
+        // Make the player face the mouse cursor
+        RotateTowardsMouse();
+
         // Update the flash cooldown UI
         UpdateFlashCooldownUI();
-
     }
 
     // Handle basic movement and animation
@@ -51,12 +53,6 @@ public class PlayerMove : MonoBehaviour
         rb.velocity = moveInput * moveSpeed;
 
         animator.SetFloat("Speed", moveInput.sqrMagnitude);
-
-        if (moveInput.x != 0)
-        {
-            Vector3 currentScale = charSR.transform.localScale;
-            charSR.transform.localScale = new Vector3(Mathf.Sign(moveInput.x) * Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
-        }
     }
 
     // Handle rolling action
@@ -115,11 +111,12 @@ public class PlayerMove : MonoBehaviour
     // Stop movement and prevent rotation upon collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("ObjectNoGo") || collision.gameObject.CompareTag("Floor")) 
+        if (collision.gameObject.CompareTag("ObjectNoGo") || collision.gameObject.CompareTag("Floor"))
         {
-            rb.velocity = Vector2.zero; 
+            rb.velocity = Vector2.zero;
         }
     }
+
     // Update the flash cooldown UI text
     private void UpdateFlashCooldownUI()
     {
@@ -130,6 +127,20 @@ public class PlayerMove : MonoBehaviour
         else
         {
             flashCooldownText = "Flash Ready!";
+        }
+    }
+
+    // Rotate the character to face the mouse cursor
+    private void RotateTowardsMouse()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+        Vector2 direction = (mousePos - transform.position).normalized;
+
+        if (direction != Vector2.zero)
+        {
+            charSR.transform.localScale = new Vector3(Mathf.Sign(direction.x) * Mathf.Abs(charSR.transform.localScale.x), charSR.transform.localScale.y, charSR.transform.localScale.z);
         }
     }
 }
