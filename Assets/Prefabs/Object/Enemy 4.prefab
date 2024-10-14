@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 298791731267114181}
   - component: {fileID: 3297991260244146575}
   - component: {fileID: 5410959416988865904}
+  - component: {fileID: 8025889505379510836}
   m_Layer: 7
   m_Name: Enemy 4
   m_TagString: Untagged
@@ -302,6 +303,21 @@ MonoBehaviour:
   CharacterSR: {fileID: 4132551081681583442}
   animator: {fileID: 5082135027273466028}
   ReachDistance: 2.5
+--- !u!114 &8025889505379510836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3541502712042586600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87716ee439204545aeed0ca0fab71d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 150
+  damageMultiplier: 1
+  damageToPlayer: 0.1
 --- !u!1 &6648571127363152786
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +331,7 @@ GameObject:
   - component: {fileID: 7127756254791245032}
   - component: {fileID: 5733838388986305346}
   - component: {fileID: 170472331489378001}
+  - component: {fileID: 152625571504623141}
   m_Layer: 8
   m_Name: battle
   m_TagString: Untagged
@@ -485,3 +502,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 3.2
   animator: {fileID: 7127756254791245032}
+--- !u!114 &152625571504623141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6648571127363152786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19944edfb96ef14dbcbc015c4971a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 8
+  isDestroyable: 0

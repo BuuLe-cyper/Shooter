@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 158351817572635418}
   - component: {fileID: 7768353428246096442}
   - component: {fileID: 4828293259169210712}
+  - component: {fileID: 5709190668820361504}
   m_Layer: 8
   m_Name: sword
   m_TagString: Untagged
@@ -172,6 +173,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   animator: {fileID: 158351817572635418}
+--- !u!114 &5709190668820361504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152504663075109126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19944edfb96ef14dbcbc015c4971a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  isDestroyable: 0
 --- !u!1 &5747956776879225500
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,8 +205,9 @@ GameObject:
   - component: {fileID: 3008332818908779693}
   - component: {fileID: 4274833857762792765}
   - component: {fileID: 2273693752538729020}
+  - component: {fileID: -3896097424524798159}
   m_Layer: 7
-  m_Name: Enemy2
+  m_Name: Enemy 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -474,3 +490,18 @@ MonoBehaviour:
   CharacterSR: {fileID: 3328015883982411795}
   animator: {fileID: 8516048877799515236}
   ReachDistance: 1.5
+--- !u!114 &-3896097424524798159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747956776879225500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87716ee439204545aeed0ca0fab71d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 70
+  damageMultiplier: 1
+  damageToPlayer: 0.1
