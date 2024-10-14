@@ -5,12 +5,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
-
     public Transform[] spawnPoints;
-
     public float[] spawnTimes;
-
-    public int[] enemyCountPerWave;
+    public int[] totalEnemiesPerWave;
 
     private void Start()
     {
@@ -23,15 +20,41 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnTimes[wave]);
 
-            int enemyCount = enemyCountPerWave[wave];
+            int totalEnemies = totalEnemiesPerWave[wave];
 
-            for (int i = 0; i < enemyCount; i++)
+            int spawnedEnemies = 0;
+
+            for (int enemyIndex = 0; enemyIndex < enemyPrefabs.Length - 1; enemyIndex++)
+            {
+                float spawnFactor = (enemyPrefabs.Length - 1 - enemyIndex) / (float)enemyPrefabs.Length;
+
+                int enemyCount = Mathf.FloorToInt(totalEnemies * spawnFactor);
+
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+                    Instantiate(enemyPrefabs[enemyIndex], spawnPoint.position, Quaternion.identity);
+
+                    spawnedEnemies++;
+
+                    yield return new WaitForSeconds(0.5f);
+                }
+            }
+
+            if (wave == spawnTimes.Length - 1)
             {
                 Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-                GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+                Instantiate(enemyPrefabs[enemyPrefabs.Length - 1], spawnPoint.position, Quaternion.identity);
 
-                Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+                yield return new WaitForSeconds(0.5f);
+            }
 
+            while (spawnedEnemies < totalEnemies)
+            {
+                Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+                Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length - 1)], spawnPoint.position, Quaternion.identity);
+
+                spawnedEnemies++;
                 yield return new WaitForSeconds(0.5f);
             }
         }

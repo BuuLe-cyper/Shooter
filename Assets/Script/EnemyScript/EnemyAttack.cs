@@ -29,10 +29,23 @@ public class EnemyAttack : MonoBehaviour
 
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-        if (distanceToTarget <= attackDistance && !isAttacking)
+        // Make the enemy face the target
+        if (distanceToTarget <= attackDistance)
         {
-            animator.SetBool("Attack", true);
-            isAttacking = true;
+            // Calculate the direction to the target
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
+
+            // Create a rotation that looks in the direction of the target
+            Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+
+            // Smoothly rotate towards the target
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); // Adjust speed as needed
+
+            if (!isAttacking)
+            {
+                animator.SetBool("Attack", true);
+                isAttacking = true;
+            }
         }
         else if (distanceToTarget > attackDistance && isAttacking)
         {
