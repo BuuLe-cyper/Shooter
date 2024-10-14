@@ -301,7 +301,7 @@ MonoBehaviour:
   RepathRate: 0.5
   CharacterSR: {fileID: 4132551081681583442}
   animator: {fileID: 5082135027273466028}
-  ReachDistance: 2.8
+  ReachDistance: 2.5
 --- !u!1 &6648571127363152786
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,5 +483,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a9ef5a271e18148a15c3a7ca336f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 3
+  attackDistance: 3.2
   animator: {fileID: 7127756254791245032}

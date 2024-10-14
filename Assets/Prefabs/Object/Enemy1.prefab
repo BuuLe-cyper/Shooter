@@ -47,7 +47,7 @@ MonoBehaviour:
   bullet: {fileID: 5413276250969789027, guid: 08fb4ff1dfb2c0f43baa301f780e836d, type: 3}
   bulletSpeed: 5
   timeBtwFire: 1
-  ShootDistance: 5
+  ShootDistance: 5.5
 --- !u!1 &6578653747843563238
 GameObject:
   m_ObjectHideFlags: 0
