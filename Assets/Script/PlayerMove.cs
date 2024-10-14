@@ -99,7 +99,8 @@ public class PlayerMove : MonoBehaviour
                 flashDirection = Vector2.right * Mathf.Sign(transform.localScale.x);
             }
             this.flashCooldown = this.flashCooldownTime;
-            rb.MovePosition(rb.position + flashDirection * flashDistance);
+            //rb.MovePosition(rb.position + flashDirection * flashDistance);
+            transform.position = rb.position + flashDirection * flashDistance;
         }
 
         if (flashCooldown > 0)
