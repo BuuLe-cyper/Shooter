@@ -141,6 +141,8 @@ GameObject:
   - component: {fileID: 619118805290442499}
   - component: {fileID: 3674314124921137001}
   - component: {fileID: 4383473022111239963}
+  - component: {fileID: 5081166789864037283}
+  - component: {fileID: 5909296670477217073}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -238,8 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff2161ede2569b4f8184b7467475eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rollBoost: 4
+  moveSpeed: 4
+  rollBoost: 5
   flashDistance: 3
   rollCooldownTime: 0.25
   animator: {fileID: 2234717949414969532}
@@ -262,6 +264,39 @@ MonoBehaviour:
   ability1Text: {fileID: 0}
   ability1Key: 304
   ability1Cooldown: 10
+--- !u!114 &5081166789864037283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433243867859246413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99470ed367d08744b8c28671cda336e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability1Image: {fileID: 0}
+  ability1Text: {fileID: 0}
+  ability1Key: 304
+  ability1Cooldown: 10
+--- !u!114 &5909296670477217073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433243867859246413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19441dfa222c29b40a282ba28d9232ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  easeHealthSlider: {fileID: 0}
+  maxHealth: 100
+  health: 0
+  animator: {fileID: 2234717949414969532}
 --- !u!1 &6845805804853251895
 GameObject:
   m_ObjectHideFlags: 0

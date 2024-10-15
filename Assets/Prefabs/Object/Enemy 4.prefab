@@ -298,7 +298,7 @@ MonoBehaviour:
   Seeker: {fileID: 1014240183040577180}
   Target: {fileID: 0}
   MoveSpeed: 3
-  NextWPDistance: 2.8
+  NextWPDistance: 2.5
   RepathRate: 0.5
   CharacterSR: {fileID: 4132551081681583442}
   animator: {fileID: 5082135027273466028}
@@ -316,8 +316,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 150
-  damageMultiplier: 1
+  damageMultiplier: 7
   damageToPlayer: 0.1
+  animator: {fileID: 5082135027273466028}
 --- !u!1 &6648571127363152786
 GameObject:
   m_ObjectHideFlags: 0

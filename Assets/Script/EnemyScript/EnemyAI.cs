@@ -5,13 +5,13 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Seeker Seeker; // Seeker component for pathfinding
-    public Transform Target; // Target the player
+    public Seeker Seeker;
+    public Transform Target;
     private Path Path;
     private Coroutine MoveCoroutine;
     public float MoveSpeed = 2f;
-    public float NextWPDistance = 0.5f; // How close the enemy should get to a waypoint before moving to the next one
-    public float RepathRate = 0.5f; // How often to recalculate the path
+    public float NextWPDistance = 0.5f;
+    public float RepathRate = 0.5f;
     public SpriteRenderer CharacterSR;
 
     public Animator animator;
@@ -34,7 +34,10 @@ public class EnemyAI : MonoBehaviour
             Debug.LogError("Player not found!");
         }
     }
-
+    void KillEnemy()
+    {
+        animator.Play("Death");
+    }
     void CalculatePath()
     {
         // Check if the seeker is available for a new path

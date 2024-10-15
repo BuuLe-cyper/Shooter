@@ -31,26 +31,18 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (health <= 0) return; // Prevent taking damage if already dead
-
-        // Calculate actual damage considering defense
+        if (health <= 0) return;
         float actualDamage = damage / (1 + (defense / 100f));
 
-        // Debugging logs
-        Debug.Log("Max Health: " + maxHealth);
-        Debug.Log("Current Health: " + health);
-        Debug.Log("Damage: " + actualDamage);
 
-        // Apply damage and prevent negative health
         health -= actualDamage;
-        health = Mathf.Clamp(health, 0, maxHealth); // Ensure health doesn't go below zero
+        health = Mathf.Clamp(health, 0, maxHealth);
 
         // Check for death
         if (health <= 0)
         {
             animator.SetBool("Death", true);
-            Debug.Log("Death");
-            health = 0; // Ensure health is set to zero
+            health = 0;
         }
     }
 }

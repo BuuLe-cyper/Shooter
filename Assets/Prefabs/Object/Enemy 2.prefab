@@ -502,6 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87716ee439204545aeed0ca0fab71d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 70
-  damageMultiplier: 1
+  maxHealth: 80
+  damageMultiplier: 16
   damageToPlayer: 0.1
+  animator: {fileID: 8516048877799515236}
