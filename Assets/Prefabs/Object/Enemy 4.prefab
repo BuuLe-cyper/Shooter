@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -688095841
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f33fdceb6174d7746b7758c7a98e236a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -318,6 +318,7 @@ MonoBehaviour:
   maxHealth: 150
   damageToPlayer: 8
   animator: {fileID: 5082135027273466028}
+  audioManager: {fileID: 0}
 --- !u!1 &6648571127363152786
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,8 +393,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -688095841
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4d62509b4a98add46b10d04cd4b4df9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -502,6 +503,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 3.2
   animator: {fileID: 7127756254791245032}
+  audioManager: {fileID: 6125956803520091769, guid: 5f70e53fdb92cd644b636a94d5d30015, type: 3}
+  type: Axe
 --- !u!114 &152625571504623141
 MonoBehaviour:
   m_ObjectHideFlags: 0
