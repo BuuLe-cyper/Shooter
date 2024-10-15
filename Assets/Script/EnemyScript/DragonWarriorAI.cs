@@ -1,65 +1,107 @@
+﻿using System.Collections;
 using UnityEngine;
 
 public class DragonWarriorAI : MonoBehaviour
 {
-    public Transform player;
-    public GameObject fireBallPrefab; // Prefab of the fireball
-    public Transform firePoint; // Where the fireball spawns
-    public float attackCooldown = 2f; // Time between attacks
-    private float lastAttackTime = 0f;
+    public Transform target; // Đối tượng để theo dõi
+    public float followDistance = 5f; // Khoảng cách tối đa để theo dõi
+    public float attackDistance = 5f; // Khoảng cách để tấn công kẻ thù
+    public float movementSpeed = 3f; // Tốc độ di chuyển của DragonWarrior
+    public float minFollowDistance = 3f; // Khoảng cách tối thiểu để duy trì từ đối tượng
 
-    private Animator animator;
-    private bool isAttacking = false;
+    public GameObject fireBallPrefab; // Prefab FireBall để khởi tạo
+    public Animator animator; // Animator cho DragonWarrior
 
-    void Start()
+    // Biến cooldown tấn công
+    public float attackCooldown = 2f; // Thời gian giữa các đợt tấn công
+    private float lastAttackTime = 0f; // Thời gian của lần tấn công trước
+
+    private bool isAttacking = false; // Trạng thái tấn công
+
+    private void Start()
     {
-        animator = GetComponent<Animator>();
-    }
-
-    void Update()
-    {
-        // Example of checking if enough time has passed for an attack
-        if (Time.time >= lastAttackTime + attackCooldown)
+        // Tìm đối tượng để theo dõi
+        GameObject player = GameObject.Find("character");
+        if (player != null)
         {
-            Attack();
+            target = player.transform;
         }
     }
 
-    void Attack()
+    private void Update()
     {
-        if (!isAttacking)
+        if (target != null && !isAttacking) // Kiểm tra không đang tấn công
         {
-            isAttacking = true;
-            animator.Play("Dragon_Attack"); // Trigger attack animation
+            // Tính khoảng cách đến mục tiêu
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-            // Fire the fireball after a delay to sync with animation
-            Invoke("ShootFireBall", 0.5f); // Adjust based on animation timing
-            lastAttackTime = Time.time;
+            // Tìm kiếm kẻ thù gần nhất để tấn công
+            GameObject nearestEnemy = FindNearestEnemy();
+            if (nearestEnemy != null)
+            {
+                float distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
+
+                // Tấn công nếu trong khoảng cách tấn công và cooldown đã hết
+                if (distanceToEnemy <= attackDistance && Time.time - lastAttackTime >= attackCooldown)
+                {
+                    AttackEnemy(nearestEnemy);
+                    lastAttackTime = Time.time;
+                    return; // Thoát khỏi Update để tránh theo dõi mục tiêu
+                }
+            }
+
+            // Theo dõi đối tượng nếu trong khoảng cách theo dõi và ngoài khoảng cách tối thiểu
+            if (distanceToTarget > minFollowDistance && distanceToTarget <= followDistance)
+            {
+                MoveTowardsTarget();
+            }
+            else
+            {
+                SetIdleAnimation(); // Đặt trạng thái nghỉ nếu ra ngoài khoảng cách theo dõi
+            }
+        }
+        else
+        {
+            SetIdleAnimation();
         }
     }
 
-    void ShootFireBall()
+    private void MoveTowardsTarget()
     {
-        // Instantiate fireball
-        GameObject fireBall = Instantiate(fireBallPrefab, firePoint.position, firePoint.rotation);
+        // Tính toán hướng đến mục tiêu
+        Vector3 direction = (target.position - transform.position).normalized;
 
-        // Get the FireBall component and set the target
-        FireBall fireBallScript = fireBall.GetComponent<FireBall>();
-        if (fireBallScript != null)
+        // Di chuyển nhân vật lên, xuống và sang trái, phải
+        Vector3 newPosition = transform.position + direction * movementSpeed * Time.deltaTime;
+        transform.position = newPosition; // Cập nhật vị trí của DragonWarrior
+
+        // Chỉ thay đổi hướng nhìn khi có chuyển động ngang
+        if (Mathf.Abs(direction.x) > 0.01f) // Kiểm tra xem có chuyển động ngang không
         {
-            // Set the nearest enemy or target here
-            Transform enemyTarget = FindNearestEnemy(); // Implement this function
-            fireBallScript.SetTarget(enemyTarget);
+            if (direction.x > 0)
+            {
+                // Nhìn sang phải
+                transform.localScale = new Vector3(1, 1, 1); // Nhìn mặc định
+            }
+            else if (direction.x < 0)
+            {
+                // Nhìn sang trái
+                transform.localScale = new Vector3(-1, 1, 1); // Lật lại để nhìn sang trái
+            }
         }
 
-        isAttacking = false;
+        animator.Play("Walk"); // Chơi hoạt ảnh đi bộ
     }
 
-    // Example of finding the nearest enemy
-    Transform FindNearestEnemy()
+    private void SetIdleAnimation()
+    {
+        animator.Play("Idle");
+    }
+
+    private GameObject FindNearestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        Transform nearestEnemy = null;
+        GameObject nearestEnemy = null;
         float closestDistance = Mathf.Infinity;
 
         foreach (GameObject enemy in enemies)
@@ -68,10 +110,56 @@ public class DragonWarriorAI : MonoBehaviour
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                nearestEnemy = enemy.transform;
+                nearestEnemy = enemy;
             }
         }
 
         return nearestEnemy;
+    }
+
+    private void AttackEnemy(GameObject enemy)
+    {
+        isAttacking = true; // Đặt trạng thái tấn công
+
+        animator.Play("Atack"); // Chơi hoạt ảnh tấn công
+
+        // Tính toán hướng đến kẻ thù
+        Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
+
+        // Cập nhật hướng nhìn của DragonWarrior dựa trên vị trí của kẻ thù
+        if (directionToEnemy.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1); // Nhìn sang phải
+        }
+        else if (directionToEnemy.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1); // Nhìn sang trái
+        }
+
+        StartCoroutine(InstantiateFireBall(enemy)); // Bắt đầu coroutine để tạo fireball
+        StartCoroutine(WaitForAttackAnimation()); // Đợi cho hoạt ảnh tấn công hoàn tất
+    }
+
+    private IEnumerator WaitForAttackAnimation()
+    {
+        // Đợi cho hoạt ảnh tấn công hoàn tất
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        isAttacking = false; // Kết thúc trạng thái tấn công
+    }
+
+    private IEnumerator InstantiateFireBall(GameObject enemy)
+    {
+        yield return new WaitForSeconds(0.5f); // Delay before firing
+
+        // Instantiate the FireBall
+        GameObject fireBall = Instantiate(fireBallPrefab, transform.position, Quaternion.identity);
+
+        // Rotate fireball towards the enemy and fix the Z-axis
+        Vector3 direction = (enemy.transform.position - transform.position).normalized;
+        Quaternion fireBallRotation = Quaternion.LookRotation(Vector3.forward, direction);
+        fireBall.transform.rotation = Quaternion.Euler(0, 0, fireBallRotation.eulerAngles.z); // Fix Z-axis rotation
+
+        fireBall.GetComponent<FireBall>().Initialize(enemy.transform);
     }
 }

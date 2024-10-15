@@ -120,9 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a12edc06169f4c40be882340ca3c4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  target: {fileID: 0}
+  followDistance: 50
+  attackDistance: 30
+  movementSpeed: 5
+  minFollowDistance: 3
   fireBallPrefab: {fileID: 8919051513844141591, guid: 754aeb04cd5cdc14bacfdbc8c96674ef, type: 3}
-  firePoint: {fileID: 4147088863843590667}
+  animator: {fileID: 7360474483700683675}
   attackCooldown: 2
 --- !u!1 &7697199089045076207
 GameObject:
