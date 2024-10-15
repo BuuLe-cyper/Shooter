@@ -10,10 +10,12 @@
         public float damageToPlayer = 1.0f;
         public static float totalScore = 0f; 
         public Animator animator;
-        void Start()
+        public AudioManager audioManager;
+    void Start()
         {
             currentHealth = maxHealth;
-        }
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
 
     public virtual void TakeDamage(float damage)
@@ -65,6 +67,7 @@
         float scoreFromDeath = (maxHealth * damageToPlayer) / 10f;
 
         totalScore += scoreFromDeath;
+        audioManager.PlaySFX(audioManager.ZombieDeath1);
 
         // Destroy the enemy game object
         Destroy(gameObject);

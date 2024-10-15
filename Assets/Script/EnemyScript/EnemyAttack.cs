@@ -7,11 +7,15 @@ public class EnemyAttack : MonoBehaviour
     private Transform target;
     public float attackDistance = 5f;
     public Animator animator;
+    public AudioManager audioManager;
+    public string type;
+
 
     private bool isAttacking = false;
 
     private void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         GameObject player = GameObject.Find("character");
         if (player != null)
         {
@@ -45,6 +49,7 @@ public class EnemyAttack : MonoBehaviour
             {
                 animator.SetBool("Attack", true);
                 isAttacking = true;
+                audioManager.Audio(type);
             }
         }
         else if (distanceToTarget > attackDistance && isAttacking)

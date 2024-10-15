@@ -9,14 +9,19 @@ public class CharacterWeapon : MonoBehaviour
     public Transform firePos;
     public float TimeBtwFire = 0.2f;
     public float bulletForce;
-
+    public AudioManager audioManager; // Reference to AudioManager
     public GameObject muzzle;
 
     private float timeBtwFire;
+
+    
     private void Start()
     {
         // Assuming the weapon is a child of the character, we can get the parent transform
         characterTransform = transform.parent;
+
+        // Assign AudioSource components (optional if already assigned in Inspector)
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -26,6 +31,7 @@ public class CharacterWeapon : MonoBehaviour
         if(Input.GetMouseButton(0) && timeBtwFire < 0)
         {
             FireBullet();
+
         }
     }
 
@@ -66,9 +72,10 @@ public class CharacterWeapon : MonoBehaviour
     void FireBullet()
     {
         timeBtwFire = TimeBtwFire;
-
+        audioManager.PlaySFX(audioManager.Shoot);
         // Instantiate the bullet at fire position
         GameObject bulletTmp = Instantiate(bullet, firePos.position, Quaternion.identity);
+
 
         Rigidbody2D rb = bulletTmp.GetComponent<Rigidbody2D>();
         rb.gravityScale = 0.2f;
