@@ -29412,7 +29412,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1099040264}
-  - component: {fileID: 1099040265}
   m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
@@ -29441,23 +29440,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1099040265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099040263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19441dfa222c29b40a282ba28d9232ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSlider: {fileID: 1895298509}
-  easeHealthSlider: {fileID: 1814298460}
-  maxHealth: 100
-  health: 0
-  animator: {fileID: 0}
 --- !u!1 &1101534958
 GameObject:
   m_ObjectHideFlags: 0

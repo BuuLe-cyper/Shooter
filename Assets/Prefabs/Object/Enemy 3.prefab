@@ -501,6 +501,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 60
-  damageMultiplier: 20
-  damageToPlayer: 0.1
+  damageToPlayer: 2
   animator: {fileID: 7707371295232052804}

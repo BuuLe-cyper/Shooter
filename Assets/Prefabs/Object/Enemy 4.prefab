@@ -316,8 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 150
-  damageMultiplier: 7
-  damageToPlayer: 0.1
+  damageToPlayer: 8
   animator: {fileID: 5082135027273466028}
 --- !u!1 &6648571127363152786
 GameObject:

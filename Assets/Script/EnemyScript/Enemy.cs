@@ -6,9 +6,8 @@
     {
         public float maxHealth = 100f;
         private float currentHealth;
-        public float damageMultiplier = 1.0f;
+        //public float damageMultiplier = 1.0f;
         public float damageToPlayer = 1.0f;
-        private int i = 0;
         public static float totalScore = 0f; 
         public Animator animator;
         void Start()
@@ -19,8 +18,9 @@
 
     public virtual void TakeDamage(float damage)
     {
-        float actualDamage = damage * damageMultiplier;
-        currentHealth -= actualDamage;
+        //float actualDamage = damage * damageMultiplier;
+
+        currentHealth -= damage;
 
         if (currentHealth <= 0)
         {
@@ -61,7 +61,9 @@
 
     void Die()
     {
-        float scoreFromDeath = (maxHealth * damageMultiplier * damageToPlayer) / 10f;
+        //float scoreFromDeath = (maxHealth * damageMultiplier * damageToPlayer) / 10f;
+        float scoreFromDeath = (maxHealth * damageToPlayer) / 10f;
+
         totalScore += scoreFromDeath;
 
         // Destroy the enemy game object
@@ -78,7 +80,6 @@
                 if (playerHealth != null)
                 {
                     playerHealth.TakeDamage(damageToPlayer);
-                    i++;
                 }
 
 
