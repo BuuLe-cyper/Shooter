@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Audio
+  - ObjectCanGo
+  - ObjectNoGo
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - Player
   - DragonAttack
   - Dragon
-  - 
+  - Canvas
   - 
   - 
   - 
