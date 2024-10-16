@@ -10,6 +10,6 @@ public class ScoreManagement : MonoBehaviour
 
     void Update()
     {
-        Point.text = "Point: " + Enemy.totalScore.ToString("F0");
+        Point.text = Enemy.totalScore.ToString("F0");
     }
 }
