@@ -12,7 +12,10 @@ GameObject:
   - component: {fileID: 8083371232203062910}
   - component: {fileID: 7360474483700683675}
   - component: {fileID: 3027802142418104911}
-  m_Layer: 0
+  - component: {fileID: 5792372649909541262}
+  - component: {fileID: 4404914873605280199}
+  - component: {fileID: 438501579579994168}
+  m_Layer: 12
   m_Name: DragonWarrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -688095841
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 20daa800a641d9e4cae18a06630db1ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -127,7 +130,130 @@ MonoBehaviour:
   minFollowDistance: 3
   fireBallPrefab: {fileID: 8919051513844141591, guid: 754aeb04cd5cdc14bacfdbc8c96674ef, type: 3}
   animator: {fileID: 7360474483700683675}
+  seeker: {fileID: 438501579579994168}
+  repathRate: 0.5
+  nextWPDistance: 0.5
   attackCooldown: 2
+--- !u!68 &5792372649909541262
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924100890524586719}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.52486247, y: -0.80074406}
+  - {x: 0.52757883, y: -0.8659036}
+  - {x: 0.53329635, y: -0.87377}
+  - {x: 0.5078275, y: -0.8772113}
+  - {x: 0.27228746, y: -0.9331336}
+  - {x: 0.113046095, y: -0.86371076}
+  - {x: 0.15274228, y: -0.81666934}
+  - {x: 0.1783533, y: -0.75325775}
+  - {x: 0.26668113, y: -0.635101}
+  - {x: 0.30373433, y: -0.5386665}
+  - {x: 0.4185996, y: -0.597489}
+  - {x: 0.515784, y: -0.57139015}
+  - {x: 0.5628246, y: -0.56656224}
+  - {x: 0.59561026, y: -0.51541543}
+  - {x: 0.6752417, y: -0.50242835}
+  - {x: 0.688085, y: -0.55104655}
+  - {x: 0.6760738, y: -0.79566735}
+  - {x: 0.51286113, y: -0.7974796}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!70 &4404914873605280199
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924100890524586719}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.3616337, y: 0}
+  m_Size: {x: 2.3967276, y: 5.12}
+  m_Direction: 0
+--- !u!114 &438501579579994168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924100890524586719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &7697199089045076207
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4147088863843590667}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FireBallPositon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +279,7 @@ Transform:
   m_GameObject: {fileID: 7697199089045076207}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.99, y: -0.69, z: 0}
+  m_LocalPosition: {x: 0.99, y: -0.587, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2687335835060358247}
   - component: {fileID: 3678512897928995990}
   - component: {fileID: 1567554072784299917}
-  - component: {fileID: 5122894831755102140}
   - component: {fileID: 3311093613579812405}
-  m_Layer: 0
+  - component: {fileID: 4037740020142927392}
+  m_Layer: 11
   m_Name: FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -688095841
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0869b1e96aac6d34cb086976dc7af826, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -152,7 +152,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &5122894831755102140
+--- !u!114 &3311093613579812405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8919051513844141591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb148c03c8367c428d44441775c402d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  lifetime: 2
+  destroyDelay: 2
+--- !u!60 &4037740020142927392
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +202,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.8478433, y: 0.5}
     oldSize: {x: 1.2, y: 0.66}
     newSize: {x: 1.2, y: 0.66}
     adaptiveTilingThreshold: 0.5
@@ -196,50 +211,38 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.59999996, y: -0.11}
-      - {x: 0.5892034, y: 0.11}
-      - {x: 0.5109063, y: 0.21398026}
-      - {x: 0.4219305, y: 0.30272633}
-      - {x: 0.37488616, y: 0.32568157}
-      - {x: -0.05474758, y: 0.33193633}
-      - {x: -0.10784088, y: 0.31704473}
-      - {x: -0.18408962, y: 0.3121592}
-      - {x: -0.17885399, y: 0.27819026}
-      - {x: -0.14002609, y: 0.2519308}
-      - {x: -0.3767872, y: 0.23513952}
-      - {x: -0.43352264, y: 0.23272634}
-      - {x: -0.4527261, y: 0.19647765}
-      - {x: -0.36551857, y: 0.16091114}
-      - {x: -0.35488617, y: 0.09408944}
-      - {x: -0.59999996, y: 0.07}
-      - {x: -0.59999996, y: -0.01}
-      - {x: -0.47784087, y: -0.044885512}
-      - {x: -0.34338284, y: -0.07110119}
-      - {x: -0.38408867, y: -0.1332935}
-      - {x: -0.35572433, y: -0.16235119}
-      - {x: -0.28363144, y: -0.16386059}
-      - {x: -0.25743294, y: -0.18018371}
-      - {x: -0.32999998, y: -0.2335224}
-      - {x: -0.29999998, y: -0.26999998}
-      - {x: 0.02, y: -0.32}
-      - {x: 0.19, y: -0.32999998}
-      - {x: 0.32999998, y: -0.32999998}
-      - {x: 0.39999998, y: -0.29999998}
-      - {x: 0.45999998, y: -0.26999998}
-      - {x: 0.59, y: -0.14999999}
+    - - {x: 0.18258804, y: -0.11}
+      - {x: 0.17011684, y: 0.10376434}
+      - {x: 0.1521949, y: 0.14960727}
+      - {x: 0.11369038, y: 0.2118679}
+      - {x: 0.009723701, y: 0.2992146}
+      - {x: -0.027411956, y: 0.32999998}
+      - {x: -0.52741194, y: 0.32999998}
+      - {x: -0.6107837, y: 0.31623563}
+      - {x: -0.601367, y: 0.27263996}
+      - {x: -0.5781584, y: 0.25569555}
+      - {x: -0.6497431, y: 0.25139782}
+      - {x: -0.6974926, y: 0.24804083}
+      - {x: -0.85325485, y: 0.23752877}
+      - {x: -0.87701976, y: 0.20039272}
+      - {x: -0.79494095, y: 0.15163839}
+      - {x: -0.7874119, y: 0.12}
+      - {x: -1.017412, y: 0.07}
+      - {x: -1.017412, y: -0.01}
+      - {x: -0.89741194, y: -0.06}
+      - {x: -0.75050575, y: -0.08893697}
+      - {x: -0.7860966, y: -0.09697837}
+      - {x: -0.7982111, y: -0.12268543}
+      - {x: -0.77193356, y: -0.15139085}
+      - {x: -0.67654324, y: -0.17766023}
+      - {x: -0.7124777, y: -0.20396906}
+      - {x: -0.74999833, y: -0.23247132}
+      - {x: -0.74741197, y: -0.24}
+      - {x: -0.71741194, y: -0.26999998}
+      - {x: -0.39741194, y: -0.32}
+      - {x: -0.22741196, y: -0.32999998}
+      - {x: -0.087411955, y: -0.32999998}
+      - {x: -0.017411957, y: -0.29999998}
+      - {x: 0.042588044, y: -0.26999998}
+      - {x: 0.17258804, y: -0.14999999}
   m_UseDelaunayMesh: 0
---- !u!114 &3311093613579812405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8919051513844141591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcb148c03c8367c428d44441775c402d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  lifetime: 2
-  destroyDelay: 2

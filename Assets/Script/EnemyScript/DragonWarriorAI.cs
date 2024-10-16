@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class DragonWarriorAI : MonoBehaviour
 {
@@ -11,6 +13,14 @@ public class DragonWarriorAI : MonoBehaviour
 
     public GameObject fireBallPrefab; // Prefab FireBall để khởi tạo
     public Animator animator; // Animator cho DragonWarrior
+
+    public Seeker seeker; // Sử dụng để tìm đường
+    private Path path;
+    private Coroutine moveCoroutine;
+    public float repathRate = 0.5f;
+    public float nextWPDistance = 0.5f;
+    private int currentWaypoint = 0;
+    private bool reachedEndOfPath = false;
 
     // Biến cooldown tấn công
     public float attackCooldown = 2f; // Thời gian giữa các đợt tấn công
@@ -25,14 +35,33 @@ public class DragonWarriorAI : MonoBehaviour
         if (player != null)
         {
             target = player.transform;
+
+            // Bắt đầu tính toán đường đi đến mục tiêu
+            InvokeRepeating(nameof(CalculatePath), 0f, repathRate);
+        }
+    }
+
+    private void CalculatePath()
+    {
+        if (seeker.IsDone() && target != null)
+        {
+            seeker.StartPath(transform.position, target.position, OnPathComplete);
+        }
+    }
+
+    private void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            currentWaypoint = 0;
         }
     }
 
     private void Update()
     {
-        if (target != null && !isAttacking) // Kiểm tra không đang tấn công
+        if (target != null && !isAttacking)
         {
-            // Tính khoảng cách đến mục tiêu
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
             // Tìm kiếm kẻ thù gần nhất để tấn công
@@ -41,56 +70,67 @@ public class DragonWarriorAI : MonoBehaviour
             {
                 float distanceToEnemy = Vector3.Distance(transform.position, nearestEnemy.transform.position);
 
-                // Tấn công nếu trong khoảng cách tấn công và cooldown đã hết
+                if (distanceToEnemy <= 2f && Time.time - lastAttackTime >= attackCooldown)
+                {
+                    StartCoroutine(PerformCloseRangeAttack(nearestEnemy));
+                    lastAttackTime = Time.time;
+                    return;
+                }
+
                 if (distanceToEnemy <= attackDistance && Time.time - lastAttackTime >= attackCooldown)
                 {
-                    AttackEnemy(nearestEnemy);
+                    StartCoroutine(AttackEnemy(nearestEnemy));
                     lastAttackTime = Time.time;
-                    return; // Thoát khỏi Update để tránh theo dõi mục tiêu
+                    return;
                 }
             }
 
             // Theo dõi đối tượng nếu trong khoảng cách theo dõi và ngoài khoảng cách tối thiểu
             if (distanceToTarget > minFollowDistance && distanceToTarget <= followDistance)
             {
-                MoveTowardsTarget();
+                if (path == null) return;
+
+                if (currentWaypoint >= path.vectorPath.Count)
+                {
+                    reachedEndOfPath = true;
+                    SetIdleAnimation();
+                    return;
+                }
+                else
+                {
+                    reachedEndOfPath = false;
+                }
+
+                MoveAlongPath(); // Di chuyển dọc theo đường dẫn
             }
             else
             {
-                SetIdleAnimation(); // Đặt trạng thái nghỉ nếu ra ngoài khoảng cách theo dõi
+                SetIdleAnimation();
             }
         }
-        else
+        else if (!isAttacking)
         {
             SetIdleAnimation();
         }
     }
 
-    private void MoveTowardsTarget()
+    private void MoveAlongPath()
     {
-        // Tính toán hướng đến mục tiêu
-        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 direction = ((Vector3)path.vectorPath[currentWaypoint] - transform.position).normalized;
+        Vector3 force = direction * movementSpeed * Time.deltaTime;
+        transform.position += force;
 
-        // Di chuyển nhân vật lên, xuống và sang trái, phải
-        Vector3 newPosition = transform.position + direction * movementSpeed * Time.deltaTime;
-        transform.position = newPosition; // Cập nhật vị trí của DragonWarrior
-
-        // Chỉ thay đổi hướng nhìn khi có chuyển động ngang
-        if (Mathf.Abs(direction.x) > 0.01f) // Kiểm tra xem có chuyển động ngang không
+        if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) < nextWPDistance)
         {
-            if (direction.x > 0)
-            {
-                // Nhìn sang phải
-                transform.localScale = new Vector3(1, 1, 1); // Nhìn mặc định
-            }
-            else if (direction.x < 0)
-            {
-                // Nhìn sang trái
-                transform.localScale = new Vector3(-1, 1, 1); // Lật lại để nhìn sang trái
-            }
+            currentWaypoint++;
         }
 
-        animator.Play("Walk"); // Chơi hoạt ảnh đi bộ
+        if (Mathf.Abs(direction.x) > 0.01f)
+        {
+            transform.localScale = direction.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+        }
+
+        animator.Play("Walk");
     }
 
     private void SetIdleAnimation()
@@ -117,49 +157,40 @@ public class DragonWarriorAI : MonoBehaviour
         return nearestEnemy;
     }
 
-    private void AttackEnemy(GameObject enemy)
+    private IEnumerator AttackEnemy(GameObject enemy)
     {
-        isAttacking = true; // Đặt trạng thái tấn công
+        isAttacking = true;
+        animator.Play("Attack");
 
-        animator.Play("Atack"); // Chơi hoạt ảnh tấn công
-
-        // Tính toán hướng đến kẻ thù
         Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
+        transform.localScale = directionToEnemy.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
 
-        // Cập nhật hướng nhìn của DragonWarrior dựa trên vị trí của kẻ thù
-        if (directionToEnemy.x > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1); // Nhìn sang phải
-        }
-        else if (directionToEnemy.x < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1); // Nhìn sang trái
-        }
+        yield return new WaitForSeconds(0.5f);
 
-        StartCoroutine(InstantiateFireBall(enemy)); // Bắt đầu coroutine để tạo fireball
-        StartCoroutine(WaitForAttackAnimation()); // Đợi cho hoạt ảnh tấn công hoàn tất
-    }
-
-    private IEnumerator WaitForAttackAnimation()
-    {
-        // Đợi cho hoạt ảnh tấn công hoàn tất
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
-        isAttacking = false; // Kết thúc trạng thái tấn công
-    }
-
-    private IEnumerator InstantiateFireBall(GameObject enemy)
-    {
-        yield return new WaitForSeconds(0.5f); // Delay before firing
-
-        // Instantiate the FireBall
         GameObject fireBall = Instantiate(fireBallPrefab, transform.position, Quaternion.identity);
-
-        // Rotate fireball towards the enemy and fix the Z-axis
         Vector3 direction = (enemy.transform.position - transform.position).normalized;
         Quaternion fireBallRotation = Quaternion.LookRotation(Vector3.forward, direction);
-        fireBall.transform.rotation = Quaternion.Euler(0, 0, fireBallRotation.eulerAngles.z); // Fix Z-axis rotation
+        fireBall.transform.rotation = Quaternion.Euler(0, 0, fireBallRotation.eulerAngles.z);
 
         fireBall.GetComponent<FireBall>().Initialize(enemy.transform);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length - 0.5f);
+
+        isAttacking = false;
+    }
+
+    private IEnumerator PerformCloseRangeAttack(GameObject enemy)
+    {
+        isAttacking = true;
+
+        int attackType = Random.Range(0, 2); // 0 là FlyKick, 1 là Strike
+        string attackAnimation = attackType == 0 ? "FlyKick" : "Strike";
+        animator.Play(attackAnimation);
+
+        Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
+        transform.localScale = directionToEnemy.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        isAttacking = false;
     }
 }
