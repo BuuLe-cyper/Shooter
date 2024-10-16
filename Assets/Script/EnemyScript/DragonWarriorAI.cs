@@ -160,7 +160,7 @@ public class DragonWarriorAI : MonoBehaviour
     private IEnumerator AttackEnemy(GameObject enemy)
     {
         isAttacking = true;
-        animator.Play("Attack");
+        animator.Play("Atack");
 
         Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
         transform.localScale = directionToEnemy.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);

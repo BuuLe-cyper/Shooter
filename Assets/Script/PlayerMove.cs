@@ -24,11 +24,19 @@ public class PlayerMove : MonoBehaviour
     // Add a reference to the Abilities script
     public Abilities abilities;
 
+    // DragonWarrior summon properties
+    public GameObject dragonWarriorPrefab;
+    public float dragonWarriorDuration = 120f; // 2 minutes
+    public float summonCooldownTime = 180f; // 3 minutes
+    private float summonCooldown = 0;
+    private GameObject summonedDragonWarrior;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         this.flashCooldown = 0;
+        this.summonCooldown = 0;
     }
 
     private void Update()
@@ -36,6 +44,7 @@ public class PlayerMove : MonoBehaviour
         HandleMovement();
         HandleRoll();
         HandleFlash();
+        HandleSummonDragonWarrior(); // Handle summoning DragonWarrior
 
         // Make the player face the mouse cursor
         RotateTowardsMouse();
@@ -99,13 +108,52 @@ public class PlayerMove : MonoBehaviour
                 flashDirection = Vector2.right * Mathf.Sign(transform.localScale.x);
             }
             this.flashCooldown = this.flashCooldownTime;
-            //rb.MovePosition(rb.position + flashDirection * flashDistance);
             transform.position = rb.position + flashDirection * flashDistance;
         }
 
         if (flashCooldown > 0)
         {
             this.flashCooldown -= Time.deltaTime;
+        }
+    }
+
+    // Handle summoning DragonWarrior
+    private void HandleSummonDragonWarrior()
+    {
+        // Check if cooldown is over and the player pressed 'F'
+        if (Input.GetKeyDown(KeyCode.F) && summonCooldown <= 0)
+        {
+            SummonDragonWarrior();
+        }
+
+        // Cooldown countdown
+        if (summonCooldown > 0)
+        {
+            summonCooldown -= Time.deltaTime;
+        }
+    }
+
+    private void SummonDragonWarrior()
+    {
+        // Summon DragonWarrior at player's position
+        summonedDragonWarrior = Instantiate(dragonWarriorPrefab, transform.position, Quaternion.identity);
+
+        // Start coroutine to destroy DragonWarrior after duration
+        StartCoroutine(DestroyDragonWarriorAfterTime());
+
+        // Set summon cooldown
+        summonCooldown = summonCooldownTime;
+    }
+
+    private IEnumerator DestroyDragonWarriorAfterTime()
+    {
+        // Wait for the duration of DragonWarrior existence
+        yield return new WaitForSeconds(dragonWarriorDuration);
+
+        // Destroy the DragonWarrior after the duration is up
+        if (summonedDragonWarrior != null)
+        {
+            Destroy(summonedDragonWarrior);
         }
     }
 
