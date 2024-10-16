@@ -437,3 +437,4 @@ MonoBehaviour:
   maxHealth: 400
   damageToPlayer: 10
   animator: {fileID: 3414421653732326493}
+  audioManager: {fileID: 6125956803520091769, guid: 5f70e53fdb92cd644b636a94d5d30015, type: 3}

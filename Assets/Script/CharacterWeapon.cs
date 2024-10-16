@@ -12,7 +12,7 @@ public class CharacterWeapon : MonoBehaviour
     public float bulletForce;
     public AudioManager audioManager; // Reference to AudioManager
     public GameObject muzzle;
-    public TextMeshProUGUI mode;
+    //public TextMeshProUGUI mode;
     private float timeBtwFire;
 
     private bool isAutoFireMode = false; // Tracks if auto-fire mode is active
@@ -37,14 +37,14 @@ public class CharacterWeapon : MonoBehaviour
             isAutoFireMode = !isAutoFireMode;
         }
 
-        if (isAutoFireMode)
-        {
-            mode.text = "Auto fire : ON";
-        }
-        else
-        {
-            mode.text = "Auto fire : OFF";
-        }
+        //if (isAutoFireMode)
+        //{
+        //    mode.text = "Auto fire : ON";
+        //}
+        //else
+        //{
+        //    mode.text = "Auto fire : OFF";
+        //}
         // Fire bullets based on the current fire mode
         if (isAutoFireMode)
         {
