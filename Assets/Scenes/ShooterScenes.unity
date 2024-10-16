@@ -41459,9 +41459,17 @@ PrefabInstance:
       value: -688095841
       objectReference: {fileID: 0}
     - target: {fileID: 3674314124921137001, guid: 5c8c51e2453e9294a91641d660a2c20a, type: 3}
+      propertyPath: summonCooldownTime
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674314124921137001, guid: 5c8c51e2453e9294a91641d660a2c20a, type: 3}
       propertyPath: dragonWarriorPrefab
       value: 
       objectReference: {fileID: 1924100890524586719, guid: 820e61210525d7c419aea5cd7f8a559d, type: 3}
+    - target: {fileID: 3674314124921137001, guid: 5c8c51e2453e9294a91641d660a2c20a, type: 3}
+      propertyPath: dragonWarriorDuration
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4383473022111239963, guid: 5c8c51e2453e9294a91641d660a2c20a, type: 3}
       propertyPath: ability1Text
       value: 

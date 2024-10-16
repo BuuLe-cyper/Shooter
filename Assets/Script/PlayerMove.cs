@@ -26,8 +26,8 @@ public class PlayerMove : MonoBehaviour
 
     // DragonWarrior summon properties
     public GameObject dragonWarriorPrefab;
-    public float dragonWarriorDuration = 120f; // 2 minutes
-    public float summonCooldownTime = 180f; // 3 minutes
+    public float dragonWarriorDuration = 30f; // 2 minutes
+    public float summonCooldownTime = 120f; // 3 minutes
     private float summonCooldown = 0;
     private GameObject summonedDragonWarrior;
 
@@ -154,6 +154,7 @@ public class PlayerMove : MonoBehaviour
         if (summonedDragonWarrior != null)
         {
             Destroy(summonedDragonWarrior);
+            summonedDragonWarrior = null; // Reset reference
         }
     }
 

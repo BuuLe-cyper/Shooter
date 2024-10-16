@@ -16,13 +16,13 @@ public class DragonWarriorAI : MonoBehaviour
 
     public Seeker seeker; // Sử dụng để tìm đường
     private Path path;
-    private Coroutine moveCoroutine;
     public float repathRate = 0.5f;
     public float nextWPDistance = 0.5f;
     private int currentWaypoint = 0;
     private bool reachedEndOfPath = false;
 
-    // Biến cooldown tấn công
+    private DragonDamage dragonDamage;
+
     public float attackCooldown = 2f; // Thời gian giữa các đợt tấn công
     private float lastAttackTime = 0f; // Thời gian của lần tấn công trước
 
@@ -39,6 +39,8 @@ public class DragonWarriorAI : MonoBehaviour
             // Bắt đầu tính toán đường đi đến mục tiêu
             InvokeRepeating(nameof(CalculatePath), 0f, repathRate);
         }
+
+        dragonDamage = GetComponent<DragonDamage>();
     }
 
     private void CalculatePath()
@@ -85,15 +87,20 @@ public class DragonWarriorAI : MonoBehaviour
                 }
             }
 
-            // Theo dõi đối tượng nếu trong khoảng cách theo dõi và ngoài khoảng cách tối thiểu
+            // Nếu ở trong khoảng cách theo dõi và ngoài khoảng cách tối thiểu
             if (distanceToTarget > minFollowDistance && distanceToTarget <= followDistance)
             {
-                if (path == null) return;
+                if (path == null || path.vectorPath == null)
+                    return;
 
+                // Kiểm tra xem đã đến waypoint cuối cùng chưa
                 if (currentWaypoint >= path.vectorPath.Count)
                 {
-                    reachedEndOfPath = true;
-                    SetIdleAnimation();
+                    if (!reachedEndOfPath) // Chỉ khi vừa đến cuối đường dẫn
+                    {
+                        reachedEndOfPath = true;
+                        SetIdleAnimation(); // Chuyển sang idle
+                    }
                     return;
                 }
                 else
@@ -105,38 +112,66 @@ public class DragonWarriorAI : MonoBehaviour
             }
             else
             {
-                SetIdleAnimation();
+                // Nếu tốc độ gần bằng 0, dừng việc cập nhật đường đi và chuyển sang idle
+                if (reachedEndOfPath || GetCurrentMovementSpeed() < 0.01f)
+                {
+                    reachedEndOfPath = true;
+                    SetIdleAnimation();
+                }
             }
         }
         else if (!isAttacking)
         {
-            SetIdleAnimation();
+            if (!reachedEndOfPath) // Đảm bảo không gọi SetIdleAnimation liên tục
+            {
+                reachedEndOfPath = true;
+                SetIdleAnimation();
+            }
         }
+    }
+
+    // Hàm tính toán tốc độ hiện tại của DragonWarrior
+    private float GetCurrentMovementSpeed()
+    {
+        if (path == null || path.vectorPath == null || currentWaypoint >= path.vectorPath.Count)
+            return 0f;
+
+        Vector3 direction = ((Vector3)path.vectorPath[currentWaypoint] - transform.position).normalized;
+        return direction.magnitude * movementSpeed;
     }
 
     private void MoveAlongPath()
     {
         Vector3 direction = ((Vector3)path.vectorPath[currentWaypoint] - transform.position).normalized;
-        Vector3 force = direction * movementSpeed * Time.deltaTime;
-        transform.position += force;
+        float moveSpeed = direction.magnitude * movementSpeed; // Tính toán tốc độ di chuyển dựa trên hướng
+        Vector3 force = direction * moveSpeed * Time.deltaTime; // Áp dụng tốc độ di chuyển vào lực
 
+        transform.position += force; // Di chuyển DragonWarrior
+
+        // Kiểm tra nếu khoảng cách tới waypoint hiện tại nhỏ hơn khoảng cách waypoint tiếp theo
         if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) < nextWPDistance)
         {
             currentWaypoint++;
         }
 
-        if (Mathf.Abs(direction.x) > 0.01f)
+        // Kiểm tra tốc độ di chuyển có đủ lớn để chuyển animation sang trạng thái "Walk"
+        if (moveSpeed >= 0.001f)
         {
+            // Thiết lập hướng di chuyển dựa trên hướng đi
             transform.localScale = direction.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+            animator.Play("Walk"); // Phát animation đi bộ
         }
-
-        animator.Play("Walk");
+        else
+        {
+            SetIdleAnimation(); // Nếu tốc độ quá thấp, phát animation "Idle"
+        }
     }
 
     private void SetIdleAnimation()
     {
         animator.Play("Idle");
     }
+
 
     private GameObject FindNearestEnemy()
     {
@@ -176,6 +211,12 @@ public class DragonWarriorAI : MonoBehaviour
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length - 0.5f);
 
         isAttacking = false;
+
+        // Kiểm tra xem DragonWarrior có đang di chuyển hay không
+        if (GetCurrentMovementSpeed() < 0.01f)
+        {
+            SetIdleAnimation(); // Chuyển về Idle nếu không còn di chuyển
+        }
     }
 
     private IEnumerator PerformCloseRangeAttack(GameObject enemy)
@@ -184,13 +225,37 @@ public class DragonWarriorAI : MonoBehaviour
 
         int attackType = Random.Range(0, 2); // 0 là FlyKick, 1 là Strike
         string attackAnimation = attackType == 0 ? "FlyKick" : "Strike";
+
+        dragonDamage.damage = attackType == 0 ? 20f : 30f; // Thiết lập sát thương dựa vào kiểu tấn công
+
         animator.Play(attackAnimation);
 
         Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
+
         transform.localScale = directionToEnemy.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
 
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        float attackMoveSpeed = movementSpeed * 1.5f; // Tốc độ lao vào có thể nhanh hơn di chuyển bình thường
+        float attackDuration = animator.GetCurrentAnimatorStateInfo(0).length;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < attackDuration)
+        {
+            float step = attackMoveSpeed * Time.deltaTime;
+
+            transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, step);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
 
         isAttacking = false;
+
+        // Kiểm tra xem DragonWarrior có đang di chuyển hay không
+        if (GetCurrentMovementSpeed() < 0.01f)
+        {
+            SetIdleAnimation(); // Chuyển về Idle nếu không còn di chuyển
+        }
     }
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1567554072784299917}
   - component: {fileID: 3311093613579812405}
   - component: {fileID: 4037740020142927392}
+  - component: {fileID: -4620692880336928190}
   m_Layer: 11
   m_Name: FireBall
   m_TagString: Untagged
@@ -246,3 +247,16 @@ PolygonCollider2D:
       - {x: 0.042588044, y: -0.26999998}
       - {x: 0.17258804, y: -0.14999999}
   m_UseDelaunayMesh: 0
+--- !u!114 &-4620692880336928190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8919051513844141591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57aa0f70ea01f94eac4ccba0f5b9654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
