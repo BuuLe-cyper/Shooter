@@ -12,12 +12,25 @@ public class OptionsMenu : MonoBehaviour
     public GameObject Test;
 
     Resolution[] resolutions;
+    [SerializeField] Slider volumeSlider;
 
     void Start()
     {
+        InitializeResolutionOptions();
+        InitializeVolume();
+    }
+
+    private void InitializeVolume()
+    {
+        if (!PlayerPrefs.HasKey("mainVolume"))
+        {
+            PlayerPrefs.SetFloat("mainVolume", 1);
+        }
+    }
+    public void InitializeResolutionOptions()
+    {
         resolutions = Screen.resolutions;
 
-        Debug.Log(resolutions.Length);
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
@@ -40,7 +53,6 @@ public class OptionsMenu : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
-
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
@@ -50,6 +62,8 @@ public class OptionsMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("MainVolume", volume);
+
+        PlayerPrefs.SetFloat("MainVolume", volume);
     }
 
     public void SetQuality(int qualityIndex)
