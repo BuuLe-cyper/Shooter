@@ -9,6 +9,7 @@ public class OptionsMenu : MonoBehaviour
     public AudioMixer audioMixer;
 
     public Dropdown resolutionDropdown;
+    public GameObject Test;
 
     Resolution[] resolutions;
 

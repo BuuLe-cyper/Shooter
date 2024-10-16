@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 211966673}
   m_Layer: 6
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28097,7 +28097,7 @@ GameObject:
   - component: {fileID: 992620335}
   m_Layer: 5
   m_Name: ObjectCanGo
-  m_TagString: Untagged
+  m_TagString: ObjectCanGo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32832,7 +32832,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744522868}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7f2f7378807df24690eadbfd56c688b, type: 3}
   m_Name: 
@@ -36522,7 +36522,7 @@ GameObject:
   - component: {fileID: 2078067994}
   m_Layer: 6
   m_Name: ObjectNoGo
-  m_TagString: Untagged
+  m_TagString: ObjectNoGo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
