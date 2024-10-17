@@ -13,11 +13,14 @@ public class PlayerHealth : MonoBehaviour
     private float lerpSpeed = 0.05f;
     private float defense = 50f;
     public Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
+        GameObject player = GameObject.Find("character");
+        spriteRenderer = player.GetComponent<SpriteRenderer>();
 
     }
 
@@ -31,6 +34,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        StartCoroutine(BlinkPlayer(spriteRenderer));
+
         if (health <= 0) return;
         float actualDamage = damage / (1 + (defense / 100f));
 
@@ -44,5 +49,19 @@ public class PlayerHealth : MonoBehaviour
             animator.SetBool("Death", true);
             health = 0;
         }
+    }
+    private IEnumerator BlinkPlayer(SpriteRenderer spriteRenderer)
+    {
+        float elaspedTime = 0f;
+
+        while (elaspedTime < 0.1f)
+        {
+            spriteRenderer.enabled = !spriteRenderer.enabled;
+
+            yield return new WaitForSeconds(0.05f);
+
+            elaspedTime += 0.05f;
+        }
+        spriteRenderer.enabled = true;
     }
 }

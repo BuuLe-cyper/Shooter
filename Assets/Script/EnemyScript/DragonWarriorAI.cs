@@ -266,6 +266,7 @@ public class DragonWarriorAI : MonoBehaviour
     }
 
 
+
     // Function to handle dragon's death
     public void DestroyDragon()
     {

@@ -25,7 +25,6 @@
         //float actualDamage = damage * damageMultiplier;
         StartCoroutine(BlinkEnemy(spriteRenderer));
 
-
         currentHealth -= damage;
 
         if (currentHealth <= 0)
