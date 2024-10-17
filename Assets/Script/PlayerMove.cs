@@ -153,8 +153,9 @@ public class PlayerMove : MonoBehaviour
         // Destroy the DragonWarrior after the duration is up
         if (summonedDragonWarrior != null)
         {
-            Destroy(summonedDragonWarrior);
-            summonedDragonWarrior = null; // Reset reference
+            summonedDragonWarrior.gameObject.GetComponent<DragonWarriorAI>().DestroyDragon();
+            //Destroy(summonedDragonWarrior);
+            //summonedDragonWarrior = null; // Reset reference
         }
     }
 

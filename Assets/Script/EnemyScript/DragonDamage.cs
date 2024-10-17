@@ -16,7 +16,6 @@ public class DragonDamage : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
-
         }
     }
 }

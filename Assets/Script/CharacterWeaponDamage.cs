@@ -10,15 +10,16 @@ public class CharacterWeaponDamage : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Enemy"))
         {
-            Debug.Log("damage enemy");
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
             if (enemy != null)
             {
+
                 enemy.TakeDamage(damage);
                 Destroy(gameObject);
             }
 
         }
     }
+     
 }

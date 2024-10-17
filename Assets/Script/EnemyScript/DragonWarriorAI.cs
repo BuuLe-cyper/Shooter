@@ -27,6 +27,7 @@ public class DragonWarriorAI : MonoBehaviour
     private float lastAttackTime = 0f; // Thời gian của lần tấn công trước
 
     private bool isAttacking = false; // Trạng thái tấn công
+    private bool isDead = false; // Trạng thái chết của DragonWarrior
 
     private void Start()
     {
@@ -62,6 +63,8 @@ public class DragonWarriorAI : MonoBehaviour
 
     private void Update()
     {
+        if (isDead) return; // Nếu dragon đã chết, không thực hiện bất kỳ hành động nào khác
+
         if (target != null && !isAttacking)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
@@ -130,7 +133,6 @@ public class DragonWarriorAI : MonoBehaviour
         }
     }
 
-    // Hàm tính toán tốc độ hiện tại của DragonWarrior
     private float GetCurrentMovementSpeed()
     {
         if (path == null || path.vectorPath == null || currentWaypoint >= path.vectorPath.Count)
@@ -148,22 +150,19 @@ public class DragonWarriorAI : MonoBehaviour
 
         transform.position += force; // Di chuyển DragonWarrior
 
-        // Kiểm tra nếu khoảng cách tới waypoint hiện tại nhỏ hơn khoảng cách waypoint tiếp theo
         if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) < nextWPDistance)
         {
             currentWaypoint++;
         }
 
-        // Kiểm tra tốc độ di chuyển có đủ lớn để chuyển animation sang trạng thái "Walk"
         if (moveSpeed >= 0.001f)
         {
-            // Thiết lập hướng di chuyển dựa trên hướng đi
             transform.localScale = direction.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
             animator.Play("Walk"); // Phát animation đi bộ
         }
         else
         {
-            SetIdleAnimation(); // Nếu tốc độ quá thấp, phát animation "Idle"
+            SetIdleAnimation();
         }
     }
 
@@ -171,7 +170,6 @@ public class DragonWarriorAI : MonoBehaviour
     {
         animator.Play("Idle");
     }
-
 
     private GameObject FindNearestEnemy()
     {
@@ -200,22 +198,22 @@ public class DragonWarriorAI : MonoBehaviour
         Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
         transform.localScale = directionToEnemy.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f); // Delay to sync with the animation's initial frames
 
+        // Create and fire the fireball
         GameObject fireBall = Instantiate(fireBallPrefab, transform.position, Quaternion.identity);
         Vector3 direction = (enemy.transform.position - transform.position).normalized;
-        Quaternion fireBallRotation = Quaternion.LookRotation(Vector3.forward, direction);
-        fireBall.transform.rotation = Quaternion.Euler(0, 0, fireBallRotation.eulerAngles.z);
-
         fireBall.GetComponent<FireBall>().Initialize(enemy.transform);
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length - 0.5f);
 
+        // Wait until the attack animation finishes
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // After the attack, reset the state
         isAttacking = false;
 
-        // Kiểm tra xem DragonWarrior có đang di chuyển hay không
         if (GetCurrentMovementSpeed() < 0.01f)
         {
-            SetIdleAnimation(); // Chuyển về Idle nếu không còn di chuyển
+            SetIdleAnimation();
         }
     }
 
@@ -223,39 +221,66 @@ public class DragonWarriorAI : MonoBehaviour
     {
         isAttacking = true;
 
-        int attackType = Random.Range(0, 2); // 0 là FlyKick, 1 là Strike
+        int attackType = Random.Range(0, 2); // 0 is FlyKick, 1 is Strike
         string attackAnimation = attackType == 0 ? "FlyKick" : "Strike";
 
-        dragonDamage.damage = attackType == 0 ? 20f : 30f; // Thiết lập sát thương dựa vào kiểu tấn công
+        dragonDamage.damage = attackType == 0 ? 20f : 30f; // Set damage based on attack type
 
         animator.Play(attackAnimation);
 
         Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
-
         transform.localScale = directionToEnemy.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
 
-        float attackMoveSpeed = movementSpeed * 1.5f; // Tốc độ lao vào có thể nhanh hơn di chuyển bình thường
+        float attackMoveSpeed = movementSpeed * 1.5f; // Move faster during attack
         float attackDuration = animator.GetCurrentAnimatorStateInfo(0).length;
 
         float elapsedTime = 0f;
 
+        // Smooth movement toward the enemy during the attack
         while (elapsedTime < attackDuration)
         {
             float step = attackMoveSpeed * Time.deltaTime;
 
-            transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, step);
+            // Stop if very close to the enemy (to prevent overshooting)
+            if (Vector3.Distance(transform.position, enemy.transform.position) < 0.1f)
+            {
+                break;
+            }
 
+            transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, step);
             elapsedTime += Time.deltaTime;
 
             yield return null;
         }
 
+        // Wait for the remaining part of the animation if needed
+        yield return new WaitForSeconds(Mathf.Max(0, attackDuration - elapsedTime));
+
+        // Reset state after attack
         isAttacking = false;
 
-        // Kiểm tra xem DragonWarrior có đang di chuyển hay không
         if (GetCurrentMovementSpeed() < 0.01f)
         {
-            SetIdleAnimation(); // Chuyển về Idle nếu không còn di chuyển
+            SetIdleAnimation();
         }
     }
+
+
+    // Function to handle dragon's death
+    public void DestroyDragon()
+    {
+        if (!isDead)
+        {
+            isDead = true;
+
+            Debug.Log("Dead");
+            // Stop further actions
+            StopAllCoroutines();
+            // Play "Dead" animation
+            animator.Play("Dead");
+            // Delay for the death animation to finish before destroying the object
+            Destroy(gameObject, 2f); // Adjust the time based on the length of the death animation
+        }
+    }
+
 }

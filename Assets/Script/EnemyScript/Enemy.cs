@@ -11,16 +11,20 @@
         public static float totalScore = 0f; 
         public Animator animator;
         public AudioManager audioManager;
+        private  SpriteRenderer spriteRenderer;
     void Start()
-        {
+     {
             currentHealth = maxHealth;
             audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
 
     public virtual void TakeDamage(float damage)
     {
         //float actualDamage = damage * damageMultiplier;
+        StartCoroutine(BlinkEnemy(spriteRenderer));
+
 
         currentHealth -= damage;
 
@@ -85,7 +89,20 @@
                     playerHealth.TakeDamage(damageToPlayer);
                 }
 
-
             }
         }
+    private IEnumerator BlinkEnemy(SpriteRenderer spriteRenderer)
+    {
+        float elaspedTime = 0f;
+
+        while (elaspedTime < 0.1f)
+        {
+            spriteRenderer.enabled = !spriteRenderer.enabled;
+
+            yield return new WaitForSeconds(0.05f);
+
+            elaspedTime += 0.05f;
+        }
+        spriteRenderer.enabled = true;
     }
+}

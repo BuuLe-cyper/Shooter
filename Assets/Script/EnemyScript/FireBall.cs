@@ -18,14 +18,13 @@ public class FireBall : MonoBehaviour
     {
         if (target != null)
         {
-            // Move towards the target enemy
+            // Di chuyển về phía kẻ địch
             Vector3 direction = (target.position - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime;
 
-            if (Vector3.Distance(transform.position, target.position) < 0.5f)
-            {
-                Destroy(gameObject);
-            }
+            // Tính toán góc quay cho FireBall chỉ theo trục X và Y
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
         else
         {
