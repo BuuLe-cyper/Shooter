@@ -22,6 +22,10 @@
 
     public virtual void TakeDamage(float damage)
     {
+        if (audioManager != null)
+    {
+        audioManager.PlayZombieHitSound(); // Play the zombie hit sound
+    }
         //float actualDamage = damage * damageMultiplier;
         StartCoroutine(BlinkEnemy(spriteRenderer));
 

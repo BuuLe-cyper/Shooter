@@ -29,8 +29,11 @@ public class DragonWarriorAI : MonoBehaviour
     private bool isAttacking = false; // Trạng thái tấn công
     private bool isDead = false; // Trạng thái chết của DragonWarrior
 
+    private AudioManager audioManager;
+
     private void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         // Tìm đối tượng để theo dõi
         GameObject player = GameObject.Find("character");
         if (player != null)
@@ -194,6 +197,14 @@ public class DragonWarriorAI : MonoBehaviour
     {
         isAttacking = true;
         animator.Play("Atack");
+        
+        // Play the dragon shoot sound effect
+        if (audioManager != null)
+        {
+            audioManager.PlayDragonSound("Shoot");
+            Debug.Log("Kaka");
+        }
+
 
         Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
         transform.localScale = directionToEnemy.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
