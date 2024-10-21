@@ -37,14 +37,14 @@ public class CharacterWeapon : MonoBehaviour
             isAutoFireMode = !isAutoFireMode;
         }
 
-        //if (isAutoFireMode)
-        //{
-        //    mode.text = "Auto fire : ON";
-        //}
-        //else
-        //{
-        //    mode.text = "Auto fire : OFF";
-        //}
+        if (isAutoFireMode)
+        {
+           mode.text = "Auto fire : ON";
+        }
+        else
+        {
+           mode.text = "Auto fire : OFF";
+        }
 
         // Fire bullets based on the current fire mode
         if (isAutoFireMode)
