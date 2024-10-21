@@ -27585,7 +27585,7 @@ GameObject:
   - component: {fileID: 509498527}
   m_Layer: 0
   m_Name: ObjectCanGo2
-  m_TagString: Untagged
+  m_TagString: ObjectCanGo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31622,16 +31622,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 6, y: 10, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 31
-      m_TileSpriteIndex: 31
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 9, y: 10, z: 0}
     second:
       serializedVersion: 2
@@ -31826,7 +31816,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: f9adffc18ff5f114285ea45d47e7ad7c, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 272349796ff488b4081806364539641b, type: 2}
-  - m_RefCount: 4
+  - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 8b3fab4c4ec55db439379a6c57b58c83, type: 2}
   - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: e0f150fc7cea9194b94636806eeb350c, type: 2}
@@ -32053,7 +32043,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 4
+  - m_RefCount: 3
     m_Data: {fileID: -354106932, guid: 6535d98b55257f7498e623fcb9893d7b, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -3709254, guid: 6535d98b55257f7498e623fcb9893d7b, type: 3}
@@ -32218,7 +32208,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 371692714, guid: 6535d98b55257f7498e623fcb9893d7b, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 132
+  - m_RefCount: 131
     m_Data:
       e00: 1
       e01: 0
@@ -32237,7 +32227,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 132
+  - m_RefCount: 131
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -32352,7 +32342,7 @@ GameObject:
   - component: {fileID: 1036931627}
   m_Layer: 6
   m_Name: ObjectNoGo2
-  m_TagString: Untagged
+  m_TagString: ObjectNoGo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
