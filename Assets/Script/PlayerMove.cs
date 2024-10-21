@@ -31,6 +31,8 @@ public class PlayerMove : MonoBehaviour
     private float summonCooldown = 0;
     private GameObject summonedDragonWarrior;
 
+    private AudioManager audioManager;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -124,6 +126,15 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && summonCooldown <= 0)
         {
             SummonDragonWarrior();
+            
+        // Get reference to the AudioManager
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+        // Play the dragon spawn sound
+        if (audioManager != null)
+        {
+            audioManager.PlayDragonSound("Spawn");
+        }
         }
 
         // Cooldown countdown

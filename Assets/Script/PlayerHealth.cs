@@ -14,10 +14,12 @@ public class PlayerHealth : MonoBehaviour
     private float defense = 50f;
     public Animator animator;
     private SpriteRenderer spriteRenderer;
+    private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         health = maxHealth;
         GameObject player = GameObject.Find("character");
         spriteRenderer = player.GetComponent<SpriteRenderer>();
@@ -35,6 +37,10 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         StartCoroutine(BlinkPlayer(spriteRenderer));
+        if (audioManager != null)
+    {
+        audioManager.PlayPlayerHitSound();
+    }
 
         if (health <= 0) return;
         float actualDamage = damage / (1 + (defense / 100f));
