@@ -52,8 +52,7 @@ public class PlayerHealth : MonoBehaviour
         // Check for death
         if (health <= 0)
         {
-            animator.SetBool("Death", true);
-            health = 0;
+            PlayerDie();
         }
     }
     private IEnumerator BlinkPlayer(SpriteRenderer spriteRenderer)
@@ -69,5 +68,11 @@ public class PlayerHealth : MonoBehaviour
             elaspedTime += 0.05f;
         }
         spriteRenderer.enabled = true;
+    }
+
+    private void PlayerDie()
+    {
+        animator.SetBool("Death", true);
+        health = 0;
     }
 }
