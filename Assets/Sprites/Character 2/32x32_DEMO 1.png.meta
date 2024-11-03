@@ -1,0 +1,1174 @@
+fileFormatVersion: 2
+guid: 12f6812d4a8d88a4c8a995e4537f5e29
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 432
+        width: 32
+        height: 41
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ae78f2d4c9ccc241b9bd8cd6daf93ef
+      internalID: 296325303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_1
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 430
+        width: 53
+        height: 66
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d51a8b38255d26a4683eae1a1d6dc943
+      internalID: 100273668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_2
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 428
+        width: 80
+        height: 68
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee29262670d61194e9ba8d69372a7050
+      internalID: -732453100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_3
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 428
+        width: 39
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e485e19007132a641a6b218575cc049c
+      internalID: 1962574452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_4
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 428
+        width: 66
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd9c3339e30dbfc42aeb11fe8ed8d2ef
+      internalID: -1608914112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_5
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 427
+        width: 79
+        height: 49
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5410a9abf9cceb343a2f93b794cba3cc
+      internalID: -451456344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_6
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 430
+        width: 50
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3a612c432aa9ba48ba8004b7b7d6764
+      internalID: -2132319821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_7
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 430
+        width: 51
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7858a4f82e4eb48b1344f995a718c1
+      internalID: 808099311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_8
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 430
+        width: 51
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef7c4b688e3abd6439d87b70b92b1f44
+      internalID: 61612282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_9
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 387
+        width: 16
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d53213de81c064dba97d2199ee2dbd
+      internalID: 25213293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_10
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 388
+        width: 14
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c74470da7fe319849be82596321366f6
+      internalID: -428735315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 344
+        width: 97
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f6cb90bada151549b0fd9c16b33ea8f
+      internalID: -461429851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_12
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 343
+        width: 97
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ff9706a7a5fb30489307e0d19043f18
+      internalID: 1030194501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_13
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 349
+        width: 45
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fa610b9398eb84faf4a6dbcee42221
+      internalID: 414615610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_14
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 351
+        width: 45
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d52276b4d3e39ae408aeba07d37dad31
+      internalID: 1017298969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_15
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 267
+        width: 41
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08e894c61cd508748a2e58b6eb66158f
+      internalID: 32642335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_16
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 268
+        width: 97
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d59f09983d63c8d4c8450e523e9752ee
+      internalID: -1160162699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_17
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 270
+        width: 160
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58f0cd5672f1d0e4782ecc60eccb2d59
+      internalID: 1084553435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_18
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 185
+        width: 62
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db6a75e623737947af1f0a00295dd01
+      internalID: -1828308650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_19
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 188
+        width: 83
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3edf8eadfe42df4fa057d6aab7a8166
+      internalID: -953073974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_20
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 184
+        width: 80
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b85ce017eab1a494a88b1d4dd98cc98d
+      internalID: 550499430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_21
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 178
+        width: 80
+        height: 70
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68182b249d4542d4f8d03b912ad4483e
+      internalID: 1762117750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_22
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 188
+        width: 127
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e44694ae7dacc434cbd2c941a48a2bbf
+      internalID: -187665257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_23
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 187
+        width: 47
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a64b18ee6b7e5f44eb922343a35cbab6
+      internalID: -981528056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_24
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 187
+        width: 80
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0bfea1c8e4d48144984f4ca7615fea7
+      internalID: -1636210684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_25
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 188
+        width: 33
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b63a395ae16ed774b887260cd9a84367
+      internalID: -598139869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_26
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 185
+        width: 30
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b57eb40bba567042997fa27a634549e
+      internalID: 115208797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_27
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 113
+        width: 49
+        height: 38
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ddf983eaca2377498b8322f93e8bd55
+      internalID: 1250287334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_28
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 111
+        width: 80
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ec21425f5d6e94e94c2fe2fc0f3b38
+      internalID: -686351382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_29
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 122
+        width: 46
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aff0510a51731549a9228fe3adfa91f
+      internalID: -2075171431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_30
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 107
+        width: 80
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14434aaf39265eb4e8afdd264bb41922
+      internalID: 987901724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_31
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 20
+        width: 67
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f53bd1b78272e41b32b198bcaf9732
+      internalID: -405322410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 32x32_DEMO 1_32
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 18
+        width: 80
+        height: 68
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31398527d5e89b64e85c5aaa9447dc3b
+      internalID: -550462219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -356.5, y: -181.5}
+      - {x: -361.5, y: -190.5}
+      - {x: -361.5, y: -210.5}
+      - {x: -350.5, y: -253.5}
+      - {x: -299.5, y: -253.5}
+      - {x: -277.5, y: -215.5}
+      - {x: -277.5, y: -192.5}
+      - {x: -283.5, y: -181.5}
+    - - {x: -408.5, y: -191.5}
+      - {x: -429.5, y: -195.5}
+      - {x: -436.5, y: -210.5}
+      - {x: -436.5, y: -232.5}
+      - {x: -411.5, y: -251.5}
+      - {x: -393.5, y: -251.5}
+      - {x: -366.5, y: -240.5}
+      - {x: -365.5, y: -237.5}
+      - {x: -365.5, y: -202.5}
+      - {x: -374.5, y: -191.5}
+    - - {x: -245.5, y: -113.5}
+      - {x: -250.5, y: -128.5}
+      - {x: -250.5, y: -145.5}
+      - {x: -232.5, y: -151.5}
+      - {x: -206.5, y: -150.5}
+      - {x: -206.5, y: -144.5}
+      - {x: -209.5, y: -141.5}
+      - {x: -206.5, y: -141.5}
+      - {x: -203.5, y: -140.5}
+      - {x: -199.5, y: -162.5}
+      - {x: -196.5, y: -164.5}
+      - {x: -136.5, y: -164.5}
+      - {x: -117.5, y: -161.5}
+      - {x: -117.5, y: -113.5}
+    - - {x: -362.5, y: -115.5}
+      - {x: -362.5, y: -160.5}
+      - {x: -304.5, y: -160.5}
+      - {x: -278.5, y: -154.5}
+      - {x: -278.5, y: -109.5}
+      - {x: -293.5, y: -109.5}
+      - {x: -309.5, y: -111.5}
+    - - {x: -422.5, y: -116.5}
+      - {x: -430.5, y: -120.5}
+      - {x: -430.5, y: -154.5}
+      - {x: -429.5, y: -158.5}
+      - {x: -387.5, y: -158.5}
+      - {x: -377.5, y: -148.5}
+      - {x: -377.5, y: -127.5}
+      - {x: -390.5, y: -116.5}
+    - - {x: -392.5, y: -142.5}
+      - {x: -395.5, y: -138.5}
+      - {x: -397.5, y: -134.5}
+      - {x: -396.5, y: -133.5}
+      - {x: -397.5, y: -132.5}
+      - {x: -393.5, y: -136.5}
+      - {x: -393.5, y: -138.5}
+      - {x: -391.5, y: -140.5}
+      - {x: -391.5, y: -143.5}
+      - {x: -390.5, y: -143.5}
+      - {x: -391.5, y: -142.5}
+    - - {x: -73.5, y: -66.5}
+      - {x: -73.5, y: -28.5}
+      - {x: -81.5, y: -19.5}
+      - {x: -110.5, y: -19.5}
+      - {x: -146.5, y: -27.5}
+      - {x: -157.5, y: -52.5}
+      - {x: -157.5, y: -88.5}
+      - {x: -154.5, y: -93.5}
+      - {x: -86.5, y: -93.5}
+      - {x: -87.5, y: -85.5}
+      - {x: -89.5, y: -77.5}
+      - {x: -75.5, y: -68.5}
+    - - {x: -203.5, y: -38.5}
+      - {x: -182.5, y: -62.5}
+      - {x: -175.5, y: -63.5}
+      - {x: -175.5, y: -40.5}
+      - {x: -181.5, y: -22.5}
+      - {x: -230.5, y: -22.5}
+      - {x: -252.5, y: -27.5}
+      - {x: -259.5, y: -48.5}
+      - {x: -259.5, y: -84.5}
+      - {x: -258.5, y: -87.5}
+      - {x: -186.5, y: -87.5}
+      - {x: -188.5, y: -75.5}
+      - {x: -193.5, y: -57.5}
+      - {x: -196.5, y: -47.5}
+    - - {x: -393.5, y: -40.5}
+      - {x: -421.5, y: -40.5}
+      - {x: -430.5, y: -43.5}
+      - {x: -439.5, y: -47.5}
+      - {x: -451.5, y: -59.5}
+      - {x: -451.5, y: -78.5}
+      - {x: -435.5, y: -86.5}
+      - {x: -389.5, y: -86.5}
+      - {x: -385.5, y: -79.5}
+      - {x: -385.5, y: -57.5}
+      - {x: -388.5, y: -43.5}
+    - - {x: 399.5, y: -28.5}
+      - {x: 399.5, y: -86.5}
+      - {x: 417.5, y: -86.5}
+      - {x: 433.5, y: -71.5}
+      - {x: 433.5, y: -39.5}
+      - {x: 411.5, y: -28.5}
+    - - {x: 139.5, y: -19.5}
+      - {x: 124.5, y: -19.5}
+      - {x: 124.5, y: -28.5}
+      - {x: 135.5, y: -83.5}
+      - {x: 136.5, y: -84.5}
+      - {x: 166.5, y: -84.5}
+      - {x: 175.5, y: -72.5}
+      - {x: 175.5, y: -43.5}
+      - {x: 151.5, y: -24.5}
+    - - {x: 196.5, y: -19.5}
+      - {x: 196.5, y: -45.5}
+      - {x: 210.5, y: -84.5}
+      - {x: 242.5, y: -84.5}
+      - {x: 278.5, y: -74.5}
+      - {x: 280.5, y: -70.5}
+      - {x: 280.5, y: -19.5}
+    - - {x: -372.5, y: -50.5}
+      - {x: -372.5, y: -71.5}
+      - {x: -359.5, y: -83.5}
+      - {x: -301.5, y: -83.5}
+      - {x: -285.5, y: -78.5}
+      - {x: -285.5, y: -65.5}
+      - {x: -290.5, y: -53.5}
+      - {x: -305.5, y: -32.5}
+      - {x: -330.5, y: -32.5}
+      - {x: -368.5, y: -41.5}
+    - - {x: -37.5, y: -62.5}
+      - {x: -5.5, y: -79.5}
+      - {x: 5.5, y: -83.5}
+      - {x: 47.5, y: -83.5}
+      - {x: 93.5, y: -43.5}
+      - {x: 93.5, y: -22.5}
+      - {x: 19.5, y: -22.5}
+      - {x: -37.5, y: -41.5}
+    - - {x: 341.5, y: -29.5}
+      - {x: 341.5, y: -83.5}
+      - {x: 359.5, y: -83.5}
+      - {x: 364.5, y: -81.5}
+      - {x: 378.5, y: -74.5}
+      - {x: 378.5, y: -42.5}
+      - {x: 368.5, y: -29.5}
+    - - {x: -142.5, y: -72.5}
+      - {x: -143.5, y: -71.5}
+      - {x: -141.5, y: -71.5}
+      - {x: -137.5, y: -73.5}
+      - {x: -140.5, y: -73.5}
+      - {x: -141.5, y: -72.5}
+    - - {x: -425.5, y: -67.5}
+      - {x: -426.5, y: -65.5}
+      - {x: -425.5, y: -64.5}
+      - {x: -425.5, y: -61.5}
+      - {x: -423.5, y: -61.5}
+      - {x: -424.5, y: -65.5}
+      - {x: -420.5, y: -69.5}
+      - {x: -421.5, y: -70.5}
+      - {x: -421.5, y: -71.5}
+      - {x: -421.5, y: -70.5}
+    - - {x: -117.5, y: -55.5}
+      - {x: -118.5, y: -54.5}
+      - {x: -127.5, y: -54.5}
+      - {x: -128.5, y: -55.5}
+      - {x: -126.5, y: -52.5}
+      - {x: -123.5, y: -49.5}
+      - {x: -115.5, y: -44.5}
+      - {x: -115.5, y: -45.5}
+      - {x: -113.5, y: -48.5}
+      - {x: -112.5, y: -52.5}
+      - {x: -114.5, y: -55.5}
+      - {x: -114.5, y: -56.5}
+      - {x: -115.5, y: -55.5}
+    - - {x: -409.5, y: -49.5}
+      - {x: -405.5, y: -49.5}
+      - {x: -408.5, y: -49.5}
+      - {x: -409.5, y: -48.5}
+    - - {x: -405.5, y: 42.5}
+      - {x: -423.5, y: 42.5}
+      - {x: -429.5, y: 22.5}
+      - {x: -429.5, y: 17.5}
+      - {x: -412.5, y: -4.5}
+      - {x: -391.5, y: -4.5}
+      - {x: -384.5, y: 7.5}
+      - {x: -384.5, y: 32.5}
+      - {x: -392.5, y: 39.5}
+    - - {x: -280.5, y: 60.5}
+      - {x: -355.5, y: 50.5}
+      - {x: -359.5, y: 31.5}
+      - {x: -359.5, y: 8.5}
+      - {x: -354.5, y: -3.5}
+      - {x: -310.5, y: -3.5}
+      - {x: -270.5, y: 15.5}
+      - {x: -258.5, y: 43.5}
+      - {x: -258.5, y: 55.5}
+      - {x: -262.5, y: 60.5}
+    - - {x: -82.5, y: 55.5}
+      - {x: -87.5, y: 62.5}
+      - {x: -246.5, y: 62.5}
+      - {x: -246.5, y: 23.5}
+      - {x: -222.5, y: -1.5}
+      - {x: -136.5, y: -1.5}
+      - {x: -99.5, y: 34.5}
+      - {x: -98.5, y: 38.5}
+      - {x: -82.5, y: 43.5}
+    - - {x: -131.5, y: 132.5}
+      - {x: -195.5, y: 113.5}
+      - {x: -195.5, y: 85.5}
+      - {x: -177.5, y: 71.5}
+      - {x: -136.5, y: 71.5}
+      - {x: -108.5, y: 87.5}
+      - {x: -94.5, y: 102.5}
+      - {x: -94.5, y: 132.5}
+    - - {x: -299.5, y: 85.5}
+      - {x: -281.5, y: 72.5}
+      - {x: -248.5, y: 72.5}
+      - {x: -198.5, y: 106.5}
+      - {x: -198.5, y: 133.5}
+      - {x: -262.5, y: 133.5}
+      - {x: -299.5, y: 124.5}
+    - - {x: -386.5, y: 91.5}
+      - {x: -388.5, y: 93.5}
+      - {x: -390.5, y: 93.5}
+      - {x: -391.5, y: 96.5}
+      - {x: -386.5, y: 92.5}
+      - {x: -384.5, y: 92.5}
+      - {x: -381.5, y: 93.5}
+      - {x: -383.5, y: 108.5}
+      - {x: -384.5, y: 110.5}
+      - {x: -421.5, y: 110.5}
+      - {x: -426.5, y: 97.5}
+      - {x: -426.5, y: 79.5}
+      - {x: -414.5, y: 77.5}
+      - {x: -377.5, y: 77.5}
+      - {x: -377.5, y: 86.5}
+      - {x: -383.5, y: 91.5}
+    - - {x: -321.5, y: 93.5}
+      - {x: -326.5, y: 93.5}
+      - {x: -328.5, y: 95.5}
+      - {x: -330.5, y: 95.5}
+      - {x: -329.5, y: 97.5}
+      - {x: -326.5, y: 94.5}
+      - {x: -323.5, y: 93.5}
+      - {x: -319.5, y: 99.5}
+      - {x: -325.5, y: 112.5}
+      - {x: -343.5, y: 112.5}
+      - {x: -362.5, y: 109.5}
+      - {x: -366.5, y: 99.5}
+      - {x: -366.5, y: 86.5}
+      - {x: -344.5, y: 79.5}
+      - {x: -319.5, y: 79.5}
+      - {x: -317.5, y: 80.5}
+      - {x: -317.5, y: 87.5}
+    - - {x: -409.5, y: 128.5}
+      - {x: -412.5, y: 123.5}
+      - {x: -412.5, y: 117.5}
+      - {x: -411.5, y: 115.5}
+      - {x: -392.5, y: 115.5}
+      - {x: -392.5, y: 125.5}
+      - {x: -394.5, y: 128.5}
+    - - {x: -339.5, y: 130.5}
+      - {x: -346.5, y: 130.5}
+      - {x: -353.5, y: 125.5}
+      - {x: -353.5, y: 118.5}
+      - {x: -351.5, y: 116.5}
+      - {x: -337.5, y: 116.5}
+      - {x: -335.5, y: 118.5}
+      - {x: -335.5, y: 127.5}
+    - - {x: -53.5, y: 208.5}
+      - {x: -56.5, y: 186.5}
+      - {x: -56.5, y: 161.5}
+      - {x: -46.5, y: 155.5}
+      - {x: 0.5, y: 155.5}
+      - {x: 26.5, y: 163.5}
+      - {x: 26.5, y: 180.5}
+      - {x: 9.5, y: 208.5}
+    - - {x: -290.5, y: 228.5}
+      - {x: -296.5, y: 217.5}
+      - {x: -296.5, y: 191.5}
+      - {x: -285.5, y: 158.5}
+      - {x: -275.5, y: 156.5}
+      - {x: -237.5, y: 156.5}
+      - {x: -212.5, y: 194.5}
+      - {x: -212.5, y: 228.5}
+    - - {x: -196.5, y: 197.5}
+      - {x: -201.5, y: 189.5}
+      - {x: -201.5, y: 166.5}
+      - {x: -198.5, y: 156.5}
+      - {x: -160.5, y: 156.5}
+      - {x: -158.5, y: 164.5}
+      - {x: -158.5, y: 188.5}
+      - {x: -172.5, y: 197.5}
+    - - {x: -131.5, y: 208.5}
+      - {x: -145.5, y: 200.5}
+      - {x: -149.5, y: 192.5}
+      - {x: -149.5, y: 156.5}
+      - {x: -88.5, y: 156.5}
+      - {x: -79.5, y: 160.5}
+      - {x: -79.5, y: 189.5}
+      - {x: -99.5, y: 208.5}
+    - - {x: -309.5, y: 228.5}
+      - {x: -313.5, y: 228.5}
+      - {x: -354.5, y: 205.5}
+      - {x: -358.5, y: 192.5}
+      - {x: -358.5, y: 162.5}
+      - {x: -357.5, y: 158.5}
+      - {x: -325.5, y: 158.5}
+      - {x: -301.5, y: 198.5}
+      - {x: -301.5, y: 218.5}
+      - {x: -305.5, y: 226.5}
+    - - {x: 199.5, y: 220.5}
+      - {x: 196.5, y: 217.5}
+      - {x: 196.5, y: 161.5}
+      - {x: 199.5, y: 158.5}
+      - {x: 247.5, y: 158.5}
+      - {x: 250.5, y: 161.5}
+      - {x: 250.5, y: 217.5}
+      - {x: 247.5, y: 220.5}
+    - - {x: 263.5, y: 220.5}
+      - {x: 263.5, y: 158.5}
+      - {x: 318.5, y: 158.5}
+      - {x: 318.5, y: 220.5}
+    - - {x: 329.5, y: 217.5}
+      - {x: 329.5, y: 158.5}
+      - {x: 384.5, y: 158.5}
+      - {x: 384.5, y: 218.5}
+      - {x: 380.5, y: 220.5}
+      - {x: 332.5, y: 220.5}
+    - - {x: -383.5, y: 205.5}
+      - {x: -399.5, y: 205.5}
+      - {x: -402.5, y: 193.5}
+      - {x: -402.5, y: 160.5}
+      - {x: -372.5, y: 160.5}
+      - {x: -366.5, y: 173.5}
+      - {x: -366.5, y: 192.5}
+      - {x: -377.5, y: 204.5}
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      32x32_DEMO 1_0: 296325303
+      32x32_DEMO 1_1: 100273668
+      32x32_DEMO 1_10: -428735315
+      32x32_DEMO 1_11: -461429851
+      32x32_DEMO 1_12: 1030194501
+      32x32_DEMO 1_13: 414615610
+      32x32_DEMO 1_14: 1017298969
+      32x32_DEMO 1_15: 32642335
+      32x32_DEMO 1_16: -1160162699
+      32x32_DEMO 1_17: 1084553435
+      32x32_DEMO 1_18: -1828308650
+      32x32_DEMO 1_19: -953073974
+      32x32_DEMO 1_2: -732453100
+      32x32_DEMO 1_20: 550499430
+      32x32_DEMO 1_21: 1762117750
+      32x32_DEMO 1_22: -187665257
+      32x32_DEMO 1_23: -981528056
+      32x32_DEMO 1_24: -1636210684
+      32x32_DEMO 1_25: -598139869
+      32x32_DEMO 1_26: 115208797
+      32x32_DEMO 1_27: 1250287334
+      32x32_DEMO 1_28: -686351382
+      32x32_DEMO 1_29: -2075171431
+      32x32_DEMO 1_3: 1962574452
+      32x32_DEMO 1_30: 987901724
+      32x32_DEMO 1_31: -405322410
+      32x32_DEMO 1_32: -550462219
+      32x32_DEMO 1_4: -1608914112
+      32x32_DEMO 1_5: -451456344
+      32x32_DEMO 1_6: -2132319821
+      32x32_DEMO 1_7: 808099311
+      32x32_DEMO 1_8: 61612282
+      32x32_DEMO 1_9: 25213293
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

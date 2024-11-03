@@ -16,7 +16,7 @@ public class EnemyAttack : MonoBehaviour
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        GameObject player = GameObject.Find("character");
+        GameObject player = GameObject.FindGameObjectWithTag("character");
         if (player != null)
         {
             target = player.transform;

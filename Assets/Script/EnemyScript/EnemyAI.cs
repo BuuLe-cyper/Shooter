@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         // Find the player
-        GameObject player = GameObject.Find("character");
+        GameObject player = GameObject.FindGameObjectWithTag("character");
         if (player != null)
         {
             Target = player.transform;

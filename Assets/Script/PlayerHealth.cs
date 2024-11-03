@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         health = maxHealth;
-        GameObject player = GameObject.Find("character");
+        GameObject player = GameObject.FindGameObjectWithTag("character");
         spriteRenderer = player.GetComponent<SpriteRenderer>();
 
     }
@@ -43,8 +43,8 @@ public class PlayerHealth : MonoBehaviour
     }
 
         if (health <= 0) return;
-        float actualDamage = damage / (1 + (defense / 100f));
 
+        float actualDamage = damage / (1 + (defense / 100f));
 
         health -= actualDamage;
         health = Mathf.Clamp(health, 0, maxHealth);

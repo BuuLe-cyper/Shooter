@@ -9,6 +9,8 @@ TagManager:
   - ObjectCanGo
   - ObjectNoGo
   - Floor
+  - character
+  - vcam1
   layers:
   - Default
   - TransparentFX

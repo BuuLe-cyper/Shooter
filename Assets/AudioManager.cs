@@ -18,7 +18,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip dragonSpawn;    // SFX for dragon spawn
     public AudioClip dragonShoot;    // SFX for dragon shooting
     public AudioClip playerHit;    
-    public AudioClip zombieHit; 
+    public AudioClip zombieHit;
+    public AudioClip background2;
 
     private void Start()
     {

@@ -24,7 +24,7 @@
     {
         if (audioManager != null)
     {
-        audioManager.PlayZombieHitSound(); // Play the zombie hit sound
+        audioManager.PlayZombieHitSound();
     }
         //float actualDamage = damage * damageMultiplier;
         StartCoroutine(BlinkEnemy(spriteRenderer));
@@ -37,7 +37,6 @@
             {
                 animator.Play("Dead");
 
-                // Start coroutine to wait for death animation to finish
                 StartCoroutine(WaitForDeathAnimation());
             }
             else
@@ -64,19 +63,16 @@
             animationState = animator.GetCurrentAnimatorStateInfo(0);  // Update the animation state info
         }
 
-        // After the death animation finishes, destroy the object
         Die();
     }
 
     void Die()
     {
-        //float scoreFromDeath = (maxHealth * damageMultiplier * damageToPlayer) / 10f;
         float scoreFromDeath = (maxHealth * damageToPlayer) / 10f;
 
         totalScore += scoreFromDeath;
         audioManager.PlaySFX(audioManager.ZombieDeath1);
 
-        // Destroy the enemy game object
         Destroy(gameObject);
     }
 

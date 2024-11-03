@@ -50,7 +50,6 @@ public class GameOverManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isGameOver);
         if (isGameOver)
         {
             if (Input.anyKeyDown)

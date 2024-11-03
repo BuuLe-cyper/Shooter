@@ -31,7 +31,6 @@ public class CharacterWeapon : MonoBehaviour
         RotateGun();
         timeBtwFire -= Time.deltaTime;
 
-        // Toggle between auto and manual fire modes when pressing 'V'
         if (Input.GetKeyDown(KeyCode.V))
         {
             isAutoFireMode = !isAutoFireMode;
@@ -56,8 +55,6 @@ public class CharacterWeapon : MonoBehaviour
             FireBullet();
         }
     }
-
-    // Rotate the gun to follow the mouse
     void RotateGun()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -84,8 +81,6 @@ public class CharacterWeapon : MonoBehaviour
             FireBullet();
         }
     }
-
-    // Method to fire a bullet
     void FireBullet()
     {
         timeBtwFire = TimeBtwFire;

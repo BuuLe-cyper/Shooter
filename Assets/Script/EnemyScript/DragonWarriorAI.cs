@@ -5,16 +5,16 @@ using Pathfinding;
 
 public class DragonWarriorAI : MonoBehaviour
 {
-    public Transform target; // Đối tượng để theo dõi
-    public float followDistance = 5f; // Khoảng cách tối đa để theo dõi
-    public float attackDistance = 5f; // Khoảng cách để tấn công kẻ thù
-    public float movementSpeed = 3f; // Tốc độ di chuyển của DragonWarrior
-    public float minFollowDistance = 3f; // Khoảng cách tối thiểu để duy trì từ đối tượng
+    public Transform target;
+    public float followDistance = 5f;
+    public float attackDistance = 5f;
+    public float movementSpeed = 3f;
+    public float minFollowDistance = 3f;
 
-    public GameObject fireBallPrefab; // Prefab FireBall để khởi tạo
-    public Animator animator; // Animator cho DragonWarrior
+    public GameObject fireBallPrefab;
+    public Animator animator;
 
-    public Seeker seeker; // Sử dụng để tìm đường
+    public Seeker seeker;
     private Path path;
     public float repathRate = 0.5f;
     public float nextWPDistance = 0.5f;
@@ -23,24 +23,22 @@ public class DragonWarriorAI : MonoBehaviour
 
     private DragonDamage dragonDamage;
 
-    public float attackCooldown = 2f; // Thời gian giữa các đợt tấn công
-    private float lastAttackTime = 0f; // Thời gian của lần tấn công trước
+    public float attackCooldown = 2f;
+    private float lastAttackTime = 0f;
 
-    private bool isAttacking = false; // Trạng thái tấn công
-    private bool isDead = false; // Trạng thái chết của DragonWarrior
+    private bool isAttacking = false;
+    private bool isDead = false;
 
     private AudioManager audioManager;
 
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        // Tìm đối tượng để theo dõi
-        GameObject player = GameObject.Find("character");
+        GameObject player = GameObject.FindGameObjectWithTag("character");
         if (player != null)
         {
             target = player.transform;
 
-            // Bắt đầu tính toán đường đi đến mục tiêu
             InvokeRepeating(nameof(CalculatePath), 0f, repathRate);
         }
 
@@ -66,13 +64,12 @@ public class DragonWarriorAI : MonoBehaviour
 
     private void Update()
     {
-        if (isDead) return; // Nếu dragon đã chết, không thực hiện bất kỳ hành động nào khác
+        if (isDead) return;
 
         if (target != null && !isAttacking)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-            // Tìm kiếm kẻ thù gần nhất để tấn công
             GameObject nearestEnemy = FindNearestEnemy();
             if (nearestEnemy != null)
             {
@@ -93,19 +90,17 @@ public class DragonWarriorAI : MonoBehaviour
                 }
             }
 
-            // Nếu ở trong khoảng cách theo dõi và ngoài khoảng cách tối thiểu
             if (distanceToTarget > minFollowDistance && distanceToTarget <= followDistance)
             {
                 if (path == null || path.vectorPath == null)
                     return;
 
-                // Kiểm tra xem đã đến waypoint cuối cùng chưa
                 if (currentWaypoint >= path.vectorPath.Count)
                 {
-                    if (!reachedEndOfPath) // Chỉ khi vừa đến cuối đường dẫn
+                    if (!reachedEndOfPath)
                     {
                         reachedEndOfPath = true;
-                        SetIdleAnimation(); // Chuyển sang idle
+                        SetIdleAnimation();
                     }
                     return;
                 }
@@ -114,11 +109,10 @@ public class DragonWarriorAI : MonoBehaviour
                     reachedEndOfPath = false;
                 }
 
-                MoveAlongPath(); // Di chuyển dọc theo đường dẫn
+                MoveAlongPath();
             }
             else
             {
-                // Nếu tốc độ gần bằng 0, dừng việc cập nhật đường đi và chuyển sang idle
                 if (reachedEndOfPath || GetCurrentMovementSpeed() < 0.01f)
                 {
                     reachedEndOfPath = true;
@@ -128,7 +122,7 @@ public class DragonWarriorAI : MonoBehaviour
         }
         else if (!isAttacking)
         {
-            if (!reachedEndOfPath) // Đảm bảo không gọi SetIdleAnimation liên tục
+            if (!reachedEndOfPath)
             {
                 reachedEndOfPath = true;
                 SetIdleAnimation();
@@ -148,8 +142,8 @@ public class DragonWarriorAI : MonoBehaviour
     private void MoveAlongPath()
     {
         Vector3 direction = ((Vector3)path.vectorPath[currentWaypoint] - transform.position).normalized;
-        float moveSpeed = direction.magnitude * movementSpeed; // Tính toán tốc độ di chuyển dựa trên hướng
-        Vector3 force = direction * moveSpeed * Time.deltaTime; // Áp dụng tốc độ di chuyển vào lực
+        float moveSpeed = direction.magnitude * movementSpeed;
+        Vector3 force = direction * moveSpeed * Time.deltaTime;
 
         transform.position += force; // Di chuyển DragonWarrior
 
@@ -161,7 +155,7 @@ public class DragonWarriorAI : MonoBehaviour
         if (moveSpeed >= 0.001f)
         {
             transform.localScale = direction.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
-            animator.Play("Walk"); // Phát animation đi bộ
+            animator.Play("Walk");
         }
         else
         {
@@ -198,28 +192,23 @@ public class DragonWarriorAI : MonoBehaviour
         isAttacking = true;
         animator.Play("Atack");
         
-        // Play the dragon shoot sound effect
         if (audioManager != null)
         {
             audioManager.PlayDragonSound("Shoot");
-            Debug.Log("Kaka");
         }
 
 
         Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
         transform.localScale = directionToEnemy.x > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
 
-        yield return new WaitForSeconds(0.5f); // Delay to sync with the animation's initial frames
+        yield return new WaitForSeconds(0.5f);
 
-        // Create and fire the fireball
         GameObject fireBall = Instantiate(fireBallPrefab, transform.position, Quaternion.identity);
         Vector3 direction = (enemy.transform.position - transform.position).normalized;
         fireBall.GetComponent<FireBall>().Initialize(enemy.transform);
 
-        // Wait until the attack animation finishes
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
-        // After the attack, reset the state
         isAttacking = false;
 
         if (GetCurrentMovementSpeed() < 0.01f)
@@ -247,7 +236,6 @@ public class DragonWarriorAI : MonoBehaviour
 
         float elapsedTime = 0f;
 
-        // Smooth movement toward the enemy during the attack
         while (elapsedTime < attackDuration)
         {
             float step = attackMoveSpeed * Time.deltaTime;
@@ -264,10 +252,8 @@ public class DragonWarriorAI : MonoBehaviour
             yield return null;
         }
 
-        // Wait for the remaining part of the animation if needed
         yield return new WaitForSeconds(Mathf.Max(0, attackDuration - elapsedTime));
 
-        // Reset state after attack
         isAttacking = false;
 
         if (GetCurrentMovementSpeed() < 0.01f)
@@ -278,20 +264,15 @@ public class DragonWarriorAI : MonoBehaviour
 
 
 
-    // Function to handle dragon's death
     public void DestroyDragon()
     {
         if (!isDead)
         {
             isDead = true;
 
-            Debug.Log("Dead");
-            // Stop further actions
             StopAllCoroutines();
-            // Play "Dead" animation
             animator.Play("Dead");
-            // Delay for the death animation to finish before destroying the object
-            Destroy(gameObject, 2f); // Adjust the time based on the length of the death animation
+            Destroy(gameObject, 2f);
         }
     }
 

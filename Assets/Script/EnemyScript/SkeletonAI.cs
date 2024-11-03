@@ -23,7 +23,7 @@ public class SkeletonAi : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         currentState = State.Idle;
-        GameObject player = GameObject.Find("character");
+        GameObject player = GameObject.FindGameObjectWithTag("character");
         if (player != null)
         {
             target = player.transform;
@@ -59,11 +59,10 @@ public class SkeletonAi : MonoBehaviour
         }
         else
         {
-            Idle(); // If there's no target, idle
+            Idle();
         }
     }
 
-    // Play idle animation
     void Idle()
     {
         if (currentState != State.Idle && !isAttacking)
@@ -73,7 +72,6 @@ public class SkeletonAi : MonoBehaviour
         }
     }
 
-    // Move towards target animation
     void MoveTowardsTarget()
     {
         if (currentState != State.Running && !isAttacking)
@@ -83,16 +81,14 @@ public class SkeletonAi : MonoBehaviour
         }
     }
 
-    // Attack target method
     void AttackTarget()
     {
         if (Time.time >= lastAttackTime + attackCooldown && !isAttacking)
         {
-            isAttacking = true; // Mark as attacking
+            isAttacking = true;
             currentState = State.Attacking;
             Debug.Log("Attack initiated.");
 
-            // Choose randomly between two attack animations
             if (Random.Range(0, 2) == 0)
             {
                 Debug.Log("Attack2");
@@ -106,7 +102,6 @@ public class SkeletonAi : MonoBehaviour
 
             lastAttackTime = Time.time;
 
-            // Start coroutine to reset attack state
             StartCoroutine(ResetAttackAfterDelay());
         }
         else
@@ -115,7 +110,6 @@ public class SkeletonAi : MonoBehaviour
         }
     }
 
-    // Coroutine to reset attack state after animation duration
     private IEnumerator ResetAttackAfterDelay()
     {
         // Wait for the duration of the attack animation

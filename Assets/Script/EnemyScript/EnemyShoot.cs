@@ -18,7 +18,7 @@ public class EnemyShoot : MonoBehaviour
     void Update()
     {
         fireCoolDown -= Time.deltaTime; // Subtract time correctly using deltaTime
-        GameObject player = GameObject.Find("character");
+        GameObject player = GameObject.FindGameObjectWithTag("character");
 
         if (fireCoolDown <= 0 && player != null)
         {
@@ -43,7 +43,7 @@ public class EnemyShoot : MonoBehaviour
         rb.gravityScale = 0;
 
         // Get the player's position
-        GameObject player = GameObject.Find("character");
+        GameObject player = GameObject.FindGameObjectWithTag("character");
         if (player != null)
         {
             Vector3 playerPos = player.transform.position;

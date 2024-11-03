@@ -122,22 +122,18 @@ public class PlayerMove : MonoBehaviour
     // Handle summoning DragonWarrior
     private void HandleSummonDragonWarrior()
     {
-        // Check if cooldown is over and the player pressed 'F'
         if (Input.GetKeyDown(KeyCode.F) && summonCooldown <= 0)
         {
             SummonDragonWarrior();
             
-        // Get reference to the AudioManager
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
-        // Play the dragon spawn sound
         if (audioManager != null)
         {
             audioManager.PlayDragonSound("Spawn");
         }
         }
 
-        // Cooldown countdown
         if (summonCooldown > 0)
         {
             summonCooldown -= Time.deltaTime;
@@ -146,22 +142,17 @@ public class PlayerMove : MonoBehaviour
 
     private void SummonDragonWarrior()
     {
-        // Summon DragonWarrior at player's position
         summonedDragonWarrior = Instantiate(dragonWarriorPrefab, transform.position, Quaternion.identity);
 
-        // Start coroutine to destroy DragonWarrior after duration
         StartCoroutine(DestroyDragonWarriorAfterTime());
 
-        // Set summon cooldown
         summonCooldown = summonCooldownTime;
     }
 
     private IEnumerator DestroyDragonWarriorAfterTime()
     {
-        // Wait for the duration of DragonWarrior existence
         yield return new WaitForSeconds(dragonWarriorDuration);
 
-        // Destroy the DragonWarrior after the duration is up
         if (summonedDragonWarrior != null)
         {
             summonedDragonWarrior.gameObject.GetComponent<DragonWarriorAI>().DestroyDragon();
