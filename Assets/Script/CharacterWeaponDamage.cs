@@ -21,5 +21,10 @@ public class CharacterWeaponDamage : MonoBehaviour
 
         }
     }
-     
+
+    public void BoostDamage(float boostDamage)
+    {
+        damage += boostDamage;
+    }
+
 }

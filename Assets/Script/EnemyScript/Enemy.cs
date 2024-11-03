@@ -1,31 +1,36 @@
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-    public class Enemy : MonoBehaviour
-    {
-        public float maxHealth = 100f;
-        private float currentHealth;
-        //public float damageMultiplier = 1.0f;
-        public float damageToPlayer = 1.0f;
-        public static float totalScore = 0f; 
-        public Animator animator;
-        public AudioManager audioManager;
-        private  SpriteRenderer spriteRenderer;
+public class Enemy : MonoBehaviour
+{
+    public float maxHealth = 100f;
+    private float currentHealth;
+    //public float damageMultiplier = 1.0f;
+    public float damageToPlayer = 1.0f;
+    public static float totalScore = 0f;
+    public int expEnemy = 10;
+
+    public Animator animator;
+    public AudioManager audioManager;
+    private CharacterLevelManager characterLevelManager;
+    private SpriteRenderer spriteRenderer;
+    private BlinkAnimation blinkAnimation;
+
     void Start()
-     {
-            currentHealth = maxHealth;
-            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
+    {
+        currentHealth = maxHealth;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        characterLevelManager = GameObject.FindObjectOfType<CharacterLevelManager>();
     }
-
 
     public virtual void TakeDamage(float damage)
     {
         if (audioManager != null)
-    {
-        audioManager.PlayZombieHitSound();
-    }
+        {
+            audioManager.PlayZombieHitSound();
+        }
         //float actualDamage = damage * damageMultiplier;
         StartCoroutine(BlinkEnemy(spriteRenderer));
 
@@ -33,7 +38,7 @@
 
         if (currentHealth <= 0)
         {
-            if(animator != null)
+            if (animator != null)
             {
                 animator.Play("Dead");
 
@@ -43,6 +48,7 @@
             {
                 Die();
             }
+            characterLevelManager.GainExperiences(expEnemy);
         }
     }
 
@@ -78,18 +84,18 @@
 
 
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
-            if (collision.gameObject.tag == "Player")
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+
+            if (playerHealth != null)
             {
-                PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-
-                if (playerHealth != null)
-                {
-                    playerHealth.TakeDamage(damageToPlayer);
-                }
-
+                playerHealth.TakeDamage(damageToPlayer);
             }
+
         }
+    }
     private IEnumerator BlinkEnemy(SpriteRenderer spriteRenderer)
     {
         float elaspedTime = 0f;

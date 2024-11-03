@@ -317,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 150
   damageToPlayer: 8
+  expEnemy: 124
   animator: {fileID: 5082135027273466028}
   audioManager: {fileID: 6125956803520091769, guid: 5f70e53fdb92cd644b636a94d5d30015, type: 3}
 --- !u!1 &6648571127363152786
