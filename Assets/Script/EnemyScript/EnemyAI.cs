@@ -20,32 +20,61 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        // Find the player
-        GameObject player = GameObject.FindGameObjectWithTag("character");
-        if (player != null)
-        {
-            Target = player.transform;
+        // Start coroutine to find the player
+        StartCoroutine(FindPlayerCoroutine());
+    }
 
-            // Recalculate the path at regular intervals
-            InvokeRepeating(nameof(CalculatePath), 0f, RepathRate);
-        }
-        else
+    private IEnumerator FindPlayerCoroutine()
+    {
+        GameObject player = null;
+
+        // Loop until the player is found
+        while (player == null)
         {
-            Debug.LogError("Player not found!");
+            player = GameObject.FindGameObjectWithTag("character");
+
+            if (player != null)
+            {
+                Target = player.transform;
+
+                // Recalculate the path at regular intervals
+                InvokeRepeating(nameof(CalculatePath), 0f, RepathRate);
+                Debug.Log("Player found!");
+            }
+            else
+            {
+                Debug.LogWarning("Player not found! Waiting for player to be assigned...");
+            }
+
+            // Wait for a short period before checking again
+            yield return new WaitForSeconds(0.5f);
         }
     }
+
     void KillEnemy()
     {
         animator.Play("Death");
     }
     void CalculatePath()
     {
-        // Check if the seeker is available for a new path
-        if (Seeker.IsDone())
+        // Check if the Seeker is available for a new path
+        if (Seeker != null && Seeker.IsDone())
         {
-            Seeker.StartPath(transform.position, Target.position, OnPathCallback);
+            if (Target != null) // Check if Target is not null
+            {
+                Seeker.StartPath(transform.position, Target.position, OnPathCallback);
+            }
+            else
+            {
+                Debug.LogWarning("Target is null. Cannot calculate path.");
+            }
+        }
+        else if (Seeker == null)
+        {
+            Debug.LogWarning("Seeker is not assigned or has been destroyed.");
         }
     }
+
 
     void OnPathCallback(Path path)
     {
@@ -71,6 +100,13 @@ public class EnemyAI : MonoBehaviour
 
         while (currentWP < Path.vectorPath.Count)
         {
+            // Check if Target is not null
+            if (Target == null)
+            {
+                Debug.LogWarning("Target has been destroyed or is not assigned.");
+                yield break; // Exit the coroutine if the target is no longer valid
+            }
+
             float distanceToTarget = Vector2.Distance(transform.position, Target.position);
 
             if (distanceToTarget <= ReachDistance)
@@ -94,11 +130,21 @@ public class EnemyAI : MonoBehaviour
 
             if (direction.x != 0)
             {
-                CharacterSR.transform.localScale = new Vector3(Mathf.Sign(direction.x) * Mathf.Abs(CharacterSR.transform.localScale.x), CharacterSR.transform.localScale.y, CharacterSR.transform.localScale.z);
+                if (CharacterSR != null) // Check if CharacterSR is not null
+                {
+                    CharacterSR.transform.localScale = new Vector3(Mathf.Sign(direction.x) * Mathf.Abs(CharacterSR.transform.localScale.x), CharacterSR.transform.localScale.y, CharacterSR.transform.localScale.z);
+                }
+            }
+
+            // Check if the script's transform is valid before yielding
+            if (this == null)
+            {
+                yield break; // Exit the coroutine if the script instance is no longer valid
             }
 
             yield return null;
         }
+
 
         UpdateAnimatorSpeed(0);
     }

@@ -16,16 +16,29 @@ public class EnemyAttack : MonoBehaviour
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        GameObject player = GameObject.FindGameObjectWithTag("character");
-        if (player != null)
+        StartCoroutine(FindPlayer());
+    }
+
+    private IEnumerator FindPlayer()
+    {
+        while (target == null)
         {
-            target = player.transform;
-        }
-        else
-        {
-            Debug.LogError("Player not found!");
+            GameObject player = GameObject.FindGameObjectWithTag("character");
+            if (player != null)
+            {
+                target = player.transform;
+                Debug.Log("Player found!");
+            }
+            else
+            {
+                Debug.LogWarning("Waiting for player to be assigned...");
+            }
+
+            // Wait for a short time before checking again
+            yield return new WaitForSeconds(0.5f);
         }
     }
+
 
     private void Update()
     {
@@ -39,10 +52,8 @@ public class EnemyAttack : MonoBehaviour
             // Calculate the direction to the target
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            // Create a rotation that looks in the direction of the target
             Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
 
-            // Smoothly rotate towards the target
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); // Adjust speed as needed
 
             if (!isAttacking)

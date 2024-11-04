@@ -33618,6 +33618,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119406613}
   m_CullTransparentMesh: 1
+--- !u!1 &1176111463 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 928749873357155270, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
+  m_PrefabInstance: {fileID: 8718870778808602348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1176111464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176111463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab5b65ff64531e469dc4bbad8f10f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 0
+  experienceLevelUpStep: 100
+  experienceThreshold: 280
+  level: 1
+  expSlider: {fileID: 1324859229}
+  levelText: {fileID: 1515253918}
+--- !u!114 &1176111465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176111463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99470ed367d08744b8c28671cda336e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability1Image: {fileID: 1360173618}
+  ability1Text: {fileID: 1736124355}
+  ability1Key: 304
+  ability1Cooldown: 10
+--- !u!114 &1176111466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176111463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19441dfa222c29b40a282ba28d9232ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 1895298509}
+  easeHealthSlider: {fileID: 1814298460}
+  maxHealth: 100
+  health: 0
+  animator: {fileID: 1176111473}
+--- !u!95 &1176111473 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8347592295202823255, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
+  m_PrefabInstance: {fileID: 8718870778808602348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1181555813
 GameObject:
   m_ObjectHideFlags: 0
@@ -38940,7 +39001,6 @@ MonoBehaviour:
   level: 1
   expSlider: {fileID: 1324859229}
   levelText: {fileID: 1515253918}
-  levelTextzxcv: {fileID: 0}
 --- !u!1 &2078067990
 GameObject:
   m_ObjectHideFlags: 0
@@ -43557,6 +43617,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 433243867859246413, guid: 5c8c51e2453e9294a91641d660a2c20a, type: 3}
+      propertyPath: m_TagString
+      value: character
+      objectReference: {fileID: 0}
     - target: {fileID: 450296386865791233, guid: 5c8c51e2453e9294a91641d660a2c20a, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -43771,7 +43835,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5056354153444219967, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1558641002}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 928749873357155270, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1176111466}
+    - targetCorrespondingSourceObject: {fileID: 928749873357155270, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1176111465}
+    - targetCorrespondingSourceObject: {fileID: 928749873357155270, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1176111464}
   m_SourcePrefab: {fileID: 100100000, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

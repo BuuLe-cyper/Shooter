@@ -39,6 +39,9 @@ public class PlayerController2 : MonoBehaviour
     private float timeBtwFire;
     private float timeBtwFire1;
 
+    //Damage
+    public float damage = 10f;
+
     void Start()
     {
         GameObject vcam1 = GameObject.FindGameObjectWithTag("vcam1");
@@ -333,5 +336,21 @@ public class PlayerController2 : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+
+            if (enemy != null)
+            {
+
+                enemy.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+
+        }
+    }
+    public void BoostDamage(float boostDamage)
+    {
+        damage += boostDamage;
     }
 }

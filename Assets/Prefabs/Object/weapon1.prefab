@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5868375437622626433}
   - component: {fileID: 8995780040009192528}
   - component: {fileID: 3903039912636051355}
+  - component: {fileID: -5419210488329757173}
   m_Layer: 9
   m_Name: weapon1
   m_TagString: Untagged
@@ -188,3 +189,16 @@ PolygonCollider2D:
       - {x: 0.10333334, y: -0.16666667}
       - {x: 0.21000001, y: -0.093333334}
   m_UseDelaunayMesh: 0
+--- !u!114 &-5419210488329757173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2249334779237042703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57aa0f70ea01f94eac4ccba0f5b9654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
