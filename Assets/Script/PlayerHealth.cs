@@ -8,10 +8,12 @@ public class PlayerHealth : MonoBehaviour
 {
     public Slider healthSlider;
     public Slider easeHealthSlider;
+
     public float maxHealth = 100f;
     public float health;
     private float lerpSpeed = 0.05f;
     private float defense = 50f;
+
     public Animator animator;
     private SpriteRenderer spriteRenderer;
     private AudioManager audioManager;
@@ -38,9 +40,9 @@ public class PlayerHealth : MonoBehaviour
     {
         StartCoroutine(BlinkPlayer(spriteRenderer));
         if (audioManager != null)
-    {
-        audioManager.PlayPlayerHitSound();
-    }
+        {
+            audioManager.PlayPlayerHitSound();
+        }
 
         if (health <= 0) return;
 
@@ -74,5 +76,23 @@ public class PlayerHealth : MonoBehaviour
     {
         animator.SetBool("Death", true);
         health = 0;
+    }
+
+    public void AddHealth(float addHealth)
+    {
+        if (health <= 0) return;
+
+        health = Mathf.Max(addHealth + health, maxHealth);
+    }
+
+    public void UpgradeMaxHealth(float amount)
+    {
+        maxHealth += amount;
+    }
+
+    public void UpgradeMaxHealthByLevelUp()
+    {
+        float healthBoostAmount = maxHealth * 0.01f;
+        maxHealth += healthBoostAmount;
     }
 }
