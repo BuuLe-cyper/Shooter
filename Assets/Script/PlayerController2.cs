@@ -82,7 +82,7 @@ public class PlayerController2 : MonoBehaviour
         HandleComboAttack();
         HandleShooting();
     }
-   private void HandleShooting()
+    private void HandleShooting()
     {
         // Handle Primary Fire
         if (Input.GetMouseButtonDown(0) && timeBtwFire <= 0)
@@ -119,7 +119,7 @@ public class PlayerController2 : MonoBehaviour
     private IEnumerator ResetShootState(string shootParameter, float delay)
     {
         animator.SetBool(shootParameter, true);
-    
+
         yield return new WaitForSeconds(delay);
 
         animator.SetBool(shootParameter, false);
@@ -257,7 +257,7 @@ public class PlayerController2 : MonoBehaviour
     // Rotate player sprite towards the mouse position
     private void RotateTowardsMouse()
     {
-        Vector3 mousePos = Input.mousePosition; 
+        Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 direction = (mousePos - transform.position).normalized;
 
@@ -342,9 +342,14 @@ public class PlayerController2 : MonoBehaviour
 
             if (enemy != null)
             {
+                PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+                if (playerHealth == null)
+                {
+                    return;
+                }
 
+                playerHealth.TakeDamage(damage);
                 enemy.TakeDamage(damage);
-                Destroy(gameObject);
             }
 
         }
