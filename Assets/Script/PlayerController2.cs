@@ -42,6 +42,8 @@ public class PlayerController2 : MonoBehaviour
     //Damage
     public float damage = 10f;
 
+    private bool isShooting = false;
+
     void Start()
     {
         GameObject vcam1 = GameObject.FindGameObjectWithTag("vcam1");
@@ -84,45 +86,43 @@ public class PlayerController2 : MonoBehaviour
     }
     private void HandleShooting()
     {
-        // Handle Primary Fire
+        // Nếu đang bắn thì set cờ isShooting thành true
         if (Input.GetMouseButtonDown(0) && timeBtwFire <= 0)
         {
+            isShooting = true;
+            animator.SetBool("isShoot", true);
             animator.Play("Fire", -1, 0);
-
             FireBullet(bullet, TimeBtwFire);
             timeBtwFire = TimeBtwFire;
-
             StartCoroutine(ResetShootState("isShoot", 1.0f));
         }
 
-
-        // Handle Secondary Fire
         if (Input.GetKeyDown(KeyCode.F) && timeBtwFire1 <= 0)
         {
+            isShooting = true;
+            animator.SetBool("isShoot1", true);
             animator.CrossFade("Fire1", 0.1f);
             FireBullet(bullet1, TimeBtwFire1);
             timeBtwFire1 = TimeBtwFire1;
-
             StartCoroutine(ResetShootState("isShoot1", 1.0f));
         }
-        if (timeBtwFire > 0)
-        {
-            timeBtwFire -= Time.deltaTime;
-        }
-        if (timeBtwFire1 > 0)
-        {
-            timeBtwFire1 -= Time.deltaTime;
-        }
 
-        animator.SetBool("isMoving", moveInput.sqrMagnitude > 0.001);
+        // Giảm thời gian giữa các lần bắn
+        if (timeBtwFire > 0) timeBtwFire -= Time.deltaTime;
+        if (timeBtwFire1 > 0) timeBtwFire1 -= Time.deltaTime;
+
+        // Chỉ set trạng thái di chuyển khi không bắn
+        if (!isShooting)
+        {
+            animator.SetBool("isMoving", moveInput.sqrMagnitude > 0.001);
+        }
     }
     private IEnumerator ResetShootState(string shootParameter, float delay)
     {
-        animator.SetBool(shootParameter, true);
-
         yield return new WaitForSeconds(delay);
 
         animator.SetBool(shootParameter, false);
+        isShooting = false; // Reset trạng thái bắn
 
         if (moveInput.sqrMagnitude < 0.001)
         {
@@ -270,16 +270,17 @@ public class PlayerController2 : MonoBehaviour
     // Combo Attack Mechanic
     private void HandleComboAttack()
     {
+        // Bỏ qua khi đang bắn
+        if (isShooting) return;
+
         if (Input.GetMouseButtonDown(1)) // Right-click
         {
             AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-            // Ensure animation can progress based on the current combo count
             if (comboCounter == 0 || stateInfo.normalizedTime >= 1f)
             {
                 float timeSinceLastClick = Time.time - lastClickTime;
 
-                // Increment comboCounter if within the allowed delay, else reset to 1
                 if (timeSinceLastClick <= comboDelay)
                 {
                     comboCounter++;
@@ -291,7 +292,6 @@ public class PlayerController2 : MonoBehaviour
 
                 lastClickTime = Time.time;
 
-                // Switch to the correct attack animation based on comboCounter
                 switch (comboCounter)
                 {
                     case 1:
@@ -311,7 +311,7 @@ public class PlayerController2 : MonoBehaviour
             }
         }
 
-        // If time since the last attack exceeds the comboDelay, reset combo and transition to idle or other states based on input
+        // Nếu quá thời gian comboDelay, reset combo và kiểm tra điều kiện di chuyển
         if (Time.time - lastClickTime > comboDelay)
         {
             comboCounter = 0;

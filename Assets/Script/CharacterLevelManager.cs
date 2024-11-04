@@ -22,18 +22,17 @@ public class CharacterLevelManager : MonoBehaviour
     private void Start()
     {
         playerHealth = GetComponent<PlayerHealth>();
-        //attackDamage = FindObjectOfType<CharacterWeaponDamage>();
-        //if (attackDamage == null)
+        ////attackDamage = FindObjectOfType<CharacterWeaponDamage>();
+        ////if (attackDamage == null)
+        ////{
+        ////    Debug.LogError("CharacterWeaponDamage component not found on " + gameObject.name);
+        ////}
+        //GameObject player = GameObject.FindGameObjectWithTag("character");
+        //if(player == null )
         //{
-        //    Debug.LogError("CharacterWeaponDamage component not found on " + gameObject.name);
+        //    player = GameObject.FindGameObjectWithTag("Player");
         //}
-        GameObject player = GameObject.FindGameObjectWithTag("character");
-        spriteRenderer = player.GetComponent<SpriteRenderer>();
-        if (player == null)
-        {
-            Debug.LogError("spriteRenderer component not found on " + gameObject.name);
-        }
-
+        //spriteRenderer = player.GetComponent<SpriteRenderer>();
         expSlider.value = 0;
         UpdateLevelCharacterText();
     }
@@ -68,7 +67,6 @@ public class CharacterLevelManager : MonoBehaviour
         experiencePoints = 0;
         experienceThreshold += experienceLevelUpStep;
 
-        playerHealth.UpgradeMaxHealthByLevelUp();
         playerHealth.AddHealth(10);
 
         // Start level up animation
@@ -76,12 +74,14 @@ public class CharacterLevelManager : MonoBehaviour
 
         //attackDamage.BoostDamage(5);
         UpdateLevelCharacterText();
+        UpgradeCharacterByLevel();
     }
 
 
     private void UpdateLevelCharacterText()
     {
         levelText.text = "Level " + level;
+
     }
 
     private IEnumerator ResetExperienceGain()
@@ -115,5 +115,39 @@ public class CharacterLevelManager : MonoBehaviour
         }
 
         transform.localScale = originalScale; // Ensure the scale is reset
+    }
+    private void UpgradeCharacterByLevel()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player") ?? GameObject.FindGameObjectWithTag("character");
+        GameObject weapon = GameObject.FindGameObjectWithTag("PlayerAttack");
+
+        if (weapon != null)
+        {
+            CharacterWeaponDamage damageWeapon = weapon.GetComponent<CharacterWeaponDamage>();
+            if (damageWeapon != null)
+            {
+                damageWeapon.damage *= 1 + (0.1f * level);
+            }
+        }
+
+        if (player != null)
+        {
+            PlayerMove playerMove = player.GetComponent<PlayerMove>();
+            if (playerMove != null)
+            {
+                playerMove.moveSpeed *= 1 + (0.05f * level);
+                playerMove.summonCooldownTime = Mathf.Max(0, playerMove.summonCooldownTime - (0.5f * level));
+                playerMove.dragonWarriorDuration += 2 * level;
+            }
+
+            PlayerController2 playerController2 = player.GetComponent<PlayerController2>();
+            if (playerController2 != null)
+            {
+                playerController2.moveSpeed *= 1 + (0.05f * level);
+                playerController2.damage *= 1 + (0.1f * level);
+            }
+        }
+
+        playerHealth.UpgradeMaxHealthByLevelUp();
     }
 }

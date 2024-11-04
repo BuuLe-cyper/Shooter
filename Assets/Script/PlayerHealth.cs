@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0) return;
 
         float actualDamage = damage / (1 + (defense / 100f));
-
+        Debug.Log("Take dame"+ actualDamage);
         health -= actualDamage;
         health = Mathf.Clamp(health, 0, maxHealth);
 

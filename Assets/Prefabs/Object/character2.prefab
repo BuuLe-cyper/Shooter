@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 8978400121246131051}
   - component: {fileID: 236433037839494101}
   - component: {fileID: 7130590593880221769}
+  - component: {fileID: 8911485925903224343}
+  - component: {fileID: 8274426558191768442}
+  - component: {fileID: 5562518873137503414}
   m_Layer: 0
   m_Name: character2
   m_TagString: character
@@ -36,7 +39,8 @@ Transform:
   m_LocalPosition: {x: -11.835, y: -0.876, z: 0}
   m_LocalScale: {x: 3.900324, y: 3.6455228, z: 3.5988996}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5979985020573449140}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &452172917477851530
@@ -82,7 +86,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 100273668, guid: 12f6812d4a8d88a4c8a995e4537f5e29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.21333334, y: 0.27333334}
@@ -241,9 +245,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0044001075, y: 0.20733967}
+  m_Offset: {x: -0.08819144, y: 0.13172366}
   serializedVersion: 2
-  m_Radius: 0.26780498
+  m_Radius: 0.1483112
 --- !u!50 &8978400121246131051
 Rigidbody2D:
   serializedVersion: 4
@@ -369,3 +373,93 @@ MonoBehaviour:
   flashCooldownText: 
   animator: {fileID: 8347592295202823255}
   charSR: {fileID: 452172917477851530}
+  bullet: {fileID: 3496672288693171799, guid: 74c61030c0a9f5a4693f758ffe50851c, type: 3}
+  bullet1: {fileID: 2249334779237042703, guid: 17cd2698bb26f6a4fafd13f2e4d36f83, type: 3}
+  firePos: {fileID: 5979985020573449140}
+  TimeBtwFire: 0.5
+  TimeBtwFire1: 3
+  bulletForce: 10
+  audioManager: {fileID: 0}
+  damage: 10
+--- !u!114 &8911485925903224343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928749873357155270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19441dfa222c29b40a282ba28d9232ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  easeHealthSlider: {fileID: 0}
+  maxHealth: 100
+  health: 0
+  animator: {fileID: 8347592295202823255}
+--- !u!114 &8274426558191768442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928749873357155270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99470ed367d08744b8c28671cda336e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability1Image: {fileID: 0}
+  ability1Text: {fileID: 0}
+  ability1Key: 304
+  ability1Cooldown: 10
+--- !u!114 &5562518873137503414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928749873357155270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab5b65ff64531e469dc4bbad8f10f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 0
+  experienceLevelUpStep: 100
+  experienceThreshold: 280
+  level: 1
+  expSlider: {fileID: 0}
+  levelText: {fileID: 0}
+--- !u!1 &5052900037543712170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5979985020573449140}
+  m_Layer: 0
+  m_Name: Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5979985020573449140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5052900037543712170}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.343, y: 0.165, z: 0}
+  m_LocalScale: {x: 0.25638896, y: 0.2743091, z: 0.27786273}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5056354153444219967}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -11,6 +11,7 @@ TagManager:
   - Floor
   - character
   - vcam1
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
