@@ -14,7 +14,8 @@ public class CharacterWeaponDamage : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                float actualDamage = damage + CharacterStatsManager.CurrentStats.attack.GetValue();
+                enemy.TakeDamage(actualDamage);
                 Destroy(gameObject);
             }
 

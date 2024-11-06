@@ -47,7 +47,7 @@ public class PlayerController2 : MonoBehaviour
     void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-
+        moveSpeed = CharacterStatsManager.CurrentStats.speed.GetValue() / 20;
         GameObject vcam1 = GameObject.FindGameObjectWithTag("vcam1");
         if (vcam1 != null)
         {
@@ -350,7 +350,8 @@ public class PlayerController2 : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                float actualDamage = damage + CharacterStatsManager.CurrentStats.attack.GetValue();
+                enemy.TakeDamage(actualDamage);
             }
 
         }

@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth += CharacterStatsManager.CurrentStats.health.GetValue();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         health = maxHealth;
         GameObject player = GameObject.FindGameObjectWithTag("character");
@@ -46,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0) return;
 
         float actualDamage = damage / (1 + (defense / 100f));
-        Debug.Log("Take dame"+ actualDamage);
+        Debug.Log("Take dame" + actualDamage);
         health -= actualDamage;
         health = Mathf.Clamp(health, 0, maxHealth);
 

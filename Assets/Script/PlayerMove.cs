@@ -39,6 +39,7 @@ public class PlayerMove : MonoBehaviour
         rb.freezeRotation = true;
         this.flashCooldown = 0;
         this.summonCooldown = 0;
+        moveSpeed += CharacterStatsManager.CurrentStats.speed.GetValue() / 20;
     }
 
     private void Update()
@@ -125,13 +126,13 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && summonCooldown <= 0)
         {
             SummonDragonWarrior();
-            
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
-        if (audioManager != null)
-        {
-            audioManager.PlayDragonSound("Spawn");
-        }
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+            if (audioManager != null)
+            {
+                audioManager.PlayDragonSound("Spawn");
+            }
         }
 
         if (summonCooldown > 0)
