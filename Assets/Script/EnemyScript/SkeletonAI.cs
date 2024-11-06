@@ -6,7 +6,6 @@ public class SkeletonAi : MonoBehaviour
 {
     private Animator animator;
     public Transform target;
-
     public float movementSpeed = 2f;
     public float attackRange = 1.5f;
     public float detectionRange = 10f;

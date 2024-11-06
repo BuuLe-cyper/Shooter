@@ -342,13 +342,6 @@ public class PlayerController2 : MonoBehaviour
 
             if (enemy != null)
             {
-                PlayerHealth playerHealth = GetComponent<PlayerHealth>();
-                if (playerHealth == null)
-                {
-                    return;
-                }
-
-                playerHealth.TakeDamage(damage);
                 enemy.TakeDamage(damage);
             }
 
