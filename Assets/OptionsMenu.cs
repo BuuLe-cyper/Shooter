@@ -6,13 +6,17 @@ using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
+    private const string MUSIC_AUDIO_KEY = "MusicVolume";
+    private const string SFX_AUDIO_KEY = "SFXVolume";
+
     public AudioMixer audioMixer;
 
     public Dropdown resolutionDropdown;
-    public GameObject Test;
-
     Resolution[] resolutions;
-    [SerializeField] Slider volumeSlider;
+
+    [SerializeField] Slider musicVolumeSlider;
+    [SerializeField] Slider sfxVolumeSlider;
+
 
     void Start()
     {
@@ -22,11 +26,27 @@ public class OptionsMenu : MonoBehaviour
 
     private void InitializeVolume()
     {
-        if (!PlayerPrefs.HasKey("mainVolume"))
+        if (!PlayerPrefs.HasKey(MUSIC_AUDIO_KEY))
         {
-            PlayerPrefs.SetFloat("mainVolume", 1);
+            PlayerPrefs.SetFloat(MUSIC_AUDIO_KEY, 1);
         }
+        if (!PlayerPrefs.HasKey(SFX_AUDIO_KEY))
+        {
+            PlayerPrefs.SetFloat(SFX_AUDIO_KEY, 1);
+        }
+
+        // Set sliders to stored values
+        float storedMusicVolume = PlayerPrefs.GetFloat(MUSIC_AUDIO_KEY);
+        float storedSFXVolume = PlayerPrefs.GetFloat(SFX_AUDIO_KEY);
+
+        musicVolumeSlider.value = storedMusicVolume;
+        sfxVolumeSlider.value = storedSFXVolume;
+
+        // Set the audio mixer volumes to match the slider values on load
+        audioMixer.SetFloat(MUSIC_AUDIO_KEY, storedMusicVolume);
+        audioMixer.SetFloat(SFX_AUDIO_KEY, storedSFXVolume);
     }
+
     public void InitializeResolutionOptions()
     {
         resolutions = Screen.resolutions;
@@ -59,11 +79,19 @@ public class OptionsMenu : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetVolume(float volume)
-    {
-        audioMixer.SetFloat("MainVolume", volume);
 
-        PlayerPrefs.SetFloat("MainVolume", volume);
+    public void SetMusicVolume(float volume)
+    {
+        audioMixer.SetFloat(MUSIC_AUDIO_KEY, volume);
+
+        PlayerPrefs.SetFloat(MUSIC_AUDIO_KEY, volume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        audioMixer.SetFloat(SFX_AUDIO_KEY, volume);
+
+        PlayerPrefs.SetFloat(SFX_AUDIO_KEY, volume);
     }
 
     public void SetQuality(int qualityIndex)
