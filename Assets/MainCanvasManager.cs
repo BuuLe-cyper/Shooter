@@ -35,6 +35,7 @@ public class MainCanvasManager : MonoBehaviour
     {
         scoreManagement.AddWinPoints(1000);
         gameOverManager.ShowGameOverScreen("Victory", "Play Again");
+        PlayerPrefs.SetInt("Level1Completed", 1);
 
     }
 }
