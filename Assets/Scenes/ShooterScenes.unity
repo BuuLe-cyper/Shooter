@@ -34864,11 +34864,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515253916}
   m_CullTransparentMesh: 1
---- !u!4 &1558641002 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5979985020573449140, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
-  m_PrefabInstance: {fileID: 8718870778808602348}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1677157181
 GameObject:
   m_ObjectHideFlags: 0
@@ -43354,10 +43349,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDoor
       objectReference: {fileID: 0}
-    - target: {fileID: 5158182252147689582, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -43371,30 +43362,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5038075557239740273, guid: 5f70e53fdb92cd644b636a94d5d30015, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 1468165891703029968, guid: bdf175a983f9e804db27475c68f9ba25, type: 2}
-    - target: {fileID: 6125956803520091769, guid: 5f70e53fdb92cd644b636a94d5d30015, type: 3}
-      propertyPath: playerHit
-      value: 
-      objectReference: {fileID: 8300000, guid: 4bf8ca31a6141f543aba6e4f356df80e, type: 3}
-    - target: {fileID: 6125956803520091769, guid: 5f70e53fdb92cd644b636a94d5d30015, type: 3}
-      propertyPath: zombieHit
-      value: 
-      objectReference: {fileID: 8300000, guid: ba6325104e125a948946084537e37c88, type: 3}
-    - target: {fileID: 6125956803520091769, guid: 5f70e53fdb92cd644b636a94d5d30015, type: 3}
-      propertyPath: dragonShoot
-      value: 
-      objectReference: {fileID: 8300000, guid: 6206b618d11dcb741acbeb63c8878dea, type: 3}
-    - target: {fileID: 6125956803520091769, guid: 5f70e53fdb92cd644b636a94d5d30015, type: 3}
-      propertyPath: dragonSpawn
-      value: 
-      objectReference: {fileID: 8300000, guid: 931ede4ec14673147a1a8e437a768bd8, type: 3}
-    - target: {fileID: 6169462470099788410, guid: 5f70e53fdb92cd644b636a94d5d30015, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 4726175713769268765, guid: bdf175a983f9e804db27475c68f9ba25, type: 2}
     - target: {fileID: 7676552301659006746, guid: 5f70e53fdb92cd644b636a94d5d30015, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.935007
@@ -43567,7 +43534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 433243867859246413, guid: 5c8c51e2453e9294a91641d660a2c20a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 433243867859246413, guid: 5c8c51e2453e9294a91641d660a2c20a, type: 3}
       propertyPath: m_TagString
@@ -43865,29 +43832,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 452172917477851530, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 928749873357155270, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
       propertyPath: m_Name
       value: character2
-      objectReference: {fileID: 0}
-    - target: {fileID: 928749873357155270, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030798821262068247, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
-      propertyPath: m_Radius
-      value: 0.11091494
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030798821262068247, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.058382884
-      objectReference: {fileID: 0}
-    - target: {fileID: 4030798821262068247, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.12360567
       objectReference: {fileID: 0}
     - target: {fileID: 5056354153444219967, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43937,22 +43884,6 @@ PrefabInstance:
       propertyPath: levelText
       value: 
       objectReference: {fileID: 1515253918}
-    - target: {fileID: 7130590593880221769, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 3496672288693171799, guid: 74c61030c0a9f5a4693f758ffe50851c, type: 3}
-    - target: {fileID: 7130590593880221769, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
-      propertyPath: bullet1
-      value: 
-      objectReference: {fileID: 2249334779237042703, guid: 17cd2698bb26f6a4fafd13f2e4d36f83, type: 3}
-    - target: {fileID: 7130590593880221769, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
-      propertyPath: firePos
-      value: 
-      objectReference: {fileID: 1558641002}
-    - target: {fileID: 7130590593880221769, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
-      propertyPath: TimeBtwFire
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8274426558191768442, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
       propertyPath: ability1Text
       value: 

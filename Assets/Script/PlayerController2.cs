@@ -35,7 +35,7 @@ public class PlayerController2 : MonoBehaviour
     public float TimeBtwFire = 0.2f;
     public float TimeBtwFire1 = 3f;
     public float bulletForce = 10f; // Default value
-    public AudioManager audioManager; // Reference to AudioManager
+    private AudioManager audioManager; // Reference to AudioManager
     private float timeBtwFire;
     private float timeBtwFire1;
 
@@ -46,6 +46,8 @@ public class PlayerController2 : MonoBehaviour
 
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         GameObject vcam1 = GameObject.FindGameObjectWithTag("vcam1");
         if (vcam1 != null)
         {
@@ -92,6 +94,7 @@ public class PlayerController2 : MonoBehaviour
             isShooting = true;
             animator.SetBool("isShoot", true);
             animator.Play("Fire", -1, 0);
+            audioManager.PlaySFX(audioManager.Shoot);
             FireBullet(bullet, TimeBtwFire);
             timeBtwFire = TimeBtwFire;
             StartCoroutine(ResetShootState("isShoot", 1.0f));
@@ -102,6 +105,7 @@ public class PlayerController2 : MonoBehaviour
             isShooting = true;
             animator.SetBool("isShoot1", true);
             animator.CrossFade("Fire1", 0.1f);
+            audioManager.PlaySFX(audioManager.Shoot);
             FireBullet(bullet1, TimeBtwFire1);
             timeBtwFire1 = TimeBtwFire1;
             StartCoroutine(ResetShootState("isShoot1", 1.0f));
@@ -296,16 +300,20 @@ public class PlayerController2 : MonoBehaviour
                 {
                     case 1:
                         animator.Play("attack1");
+                        audioManager.Audio("Sword");
                         break;
                     case 2:
                         animator.Play("attack2");
+                        audioManager.Audio("Sword");
                         break;
                     case 3:
                         animator.Play("attack3");
+                        audioManager.Audio("Sword");
                         break;
                     default:
                         comboCounter = 1;
                         animator.Play("attack1");
+                        audioManager.Audio("Sword");
                         break;
                 }
             }
