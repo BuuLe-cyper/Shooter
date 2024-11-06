@@ -6,9 +6,11 @@ public class MainCanvasManager : MonoBehaviour
 {
     public GameOverManager gameOverManager; // Reference to the GameOverManager
     private PlayerHealth playerHealth; // Reference to the PlayerHealth component
+    private ScoreManagement scoreManagement;
 
     void Start()
     {
+        scoreManagement = FindObjectOfType<ScoreManagement>();
         playerHealth = FindObjectOfType<PlayerHealth>();
 
         if (playerHealth == null)
@@ -26,7 +28,13 @@ public class MainCanvasManager : MonoBehaviour
     {
         if (playerHealth != null && playerHealth.health <= 0)
         {
-            gameOverManager.ShowGameOverScreen(); // Show the Game Over screen
+            gameOverManager.ShowGameOverScreen("Game Over", "Try Again"); // Show the Game Over screen
         }
+    }
+    public void GameWin()
+    {
+        scoreManagement.AddWinPoints(1000);
+        gameOverManager.ShowGameOverScreen("Victory", "Play Again");
+
     }
 }

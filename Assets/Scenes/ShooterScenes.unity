@@ -30318,7 +30318,7 @@ GameObject:
   - component: {fileID: 732327805}
   m_Layer: 13
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: Retry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34882,7 +34882,7 @@ GameObject:
   - component: {fileID: 1677157183}
   m_Layer: 13
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: GameStatus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43270,6 +43270,42 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
+      propertyPath: spawnTimes.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
+      propertyPath: spawnTimes.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
+      propertyPath: spawnTimes.Array.data[3]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
+      propertyPath: spawnTimes.Array.data[4]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
+      propertyPath: totalEnemiesPerWave.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
+      propertyPath: totalEnemiesPerWave.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
+      propertyPath: totalEnemiesPerWave.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
+      propertyPath: totalEnemiesPerWave.Array.data[3]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
+      propertyPath: totalEnemiesPerWave.Array.data[4]
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4935590540858574458, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.42
@@ -43313,6 +43349,10 @@ PrefabInstance:
     - target: {fileID: 5158182252147689582, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: m_Name
       value: EnemyDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158182252147689582, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43523,7 +43563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 433243867859246413, guid: 5c8c51e2453e9294a91641d660a2c20a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 433243867859246413, guid: 5c8c51e2453e9294a91641d660a2c20a, type: 3}
       propertyPath: m_TagString
@@ -43831,7 +43871,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 928749873357155270, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030798821262068247, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
+      propertyPath: m_Radius
+      value: 0.11091494
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030798821262068247, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.058382884
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030798821262068247, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.12360567
       objectReference: {fileID: 0}
     - target: {fileID: 5056354153444219967, guid: 753705e41eaa8a24580161e11fe86ee1, type: 3}
       propertyPath: m_LocalPosition.x

@@ -23,19 +23,13 @@ public class EnemyWeaponDamage : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (collision.gameObject.tag == "character" && collision.gameObject.name == "character2")
+        else if (collision is CircleCollider2D && collision.gameObject.tag == "character" && collision.gameObject.name == "character2")
         {
-            CircleCollider2D circleCollider = collision.gameObject.GetComponent<CircleCollider2D>();
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
 
-            if (circleCollider != null)
+            if (playerHealth != null)
             {
-                PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-
-                if (playerHealth != null)
-                {
-                    Debug.Log(damage);
-                    playerHealth.TakeDamage(damage);
-                }
+                playerHealth.TakeDamage(damage);
             }
             if (isDestroyable)
             {

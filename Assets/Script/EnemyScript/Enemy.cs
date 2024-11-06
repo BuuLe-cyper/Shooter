@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -10,15 +11,18 @@ public class Enemy : MonoBehaviour
     public float damageToPlayer = 1.0f;
     public static float totalScore = 0f;
     public int expEnemy = 10;
+    private GameObject gameOverManager;
 
     public Animator animator;
     public AudioManager audioManager;
     private CharacterLevelManager characterLevelManager;
     private SpriteRenderer spriteRenderer;
     private BlinkAnimation blinkAnimation;
+    private bool isDead = false;
 
     void Start()
     {
+        gameOverManager = GameObject.Find("2D Canvas");
         currentHealth = maxHealth;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,11 +31,13 @@ public class Enemy : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        if (isDead) return; // Prevent further damage processing if already dead
+
         if (audioManager != null)
         {
             audioManager.PlayZombieHitSound();
         }
-        //float actualDamage = damage * damageMultiplier;
+
         StartCoroutine(BlinkEnemy(spriteRenderer));
 
         currentHealth -= damage;
@@ -41,32 +47,34 @@ public class Enemy : MonoBehaviour
             if (animator != null)
             {
                 animator.Play("Dead");
-
                 StartCoroutine(WaitForDeathAnimation());
             }
             else
             {
                 Die();
             }
+
+            // Grant experience points for the enemy's defeat
             characterLevelManager.GainExperiences(expEnemy);
         }
     }
 
     IEnumerator WaitForDeathAnimation()
     {
-        // Wait for the animation to start playing the "Dead" animation
         AnimatorStateInfo animationState = animator.GetCurrentAnimatorStateInfo(0);
+
+        // Wait until the "Dead" animation starts
         while (!animationState.IsName("Dead"))
         {
-            yield return null;  // Wait for the next frame
-            animationState = animator.GetCurrentAnimatorStateInfo(0);  // Update the animation state info
+            yield return null;
+            animationState = animator.GetCurrentAnimatorStateInfo(0);
         }
 
-        // Now the death animation is playing, wait until it completes
+        // Wait until the "Dead" animation completes
         while (animationState.IsName("Dead") && animationState.normalizedTime < 1.0f)
         {
-            yield return null;  // Wait for the next frame
-            animationState = animator.GetCurrentAnimatorStateInfo(0);  // Update the animation state info
+            yield return null;
+            animationState = animator.GetCurrentAnimatorStateInfo(0);
         }
 
         Die();
@@ -74,12 +82,27 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        if (isDead) return; // Exit if the enemy is already dead
+
+        isDead = true; // Mark the enemy as dead
+
         float scoreFromDeath = (maxHealth * damageToPlayer) / 10f;
+        Enemy.totalScore += scoreFromDeath;
 
-        totalScore += scoreFromDeath;
-        audioManager.PlaySFX(audioManager.ZombieDeath1);
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(audioManager.ZombieDeath1);
+        }
 
+        // Destroy the enemy game object
         Destroy(gameObject);
+
+        // Check if this is a specific enemy type to trigger game win condition
+        if (gameObject.name.Contains("EnemySkeleton") && gameOverManager != null)
+        {
+            MainCanvasManager mainCanvasManager = gameOverManager.GetComponent<MainCanvasManager>();
+            mainCanvasManager.GameWin();
+        }
     }
 
 
@@ -93,8 +116,22 @@ public class Enemy : MonoBehaviour
             {
                 playerHealth.TakeDamage(damageToPlayer);
             }
-
         }
+        else if (collision.gameObject.tag == "character" && collision.gameObject.name == "character2")
+        {
+            CircleCollider2D circleCollider = collision.gameObject.GetComponent<CircleCollider2D>();
+
+            if (circleCollider != null && collision.collider == circleCollider)
+            {
+                PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damageToPlayer);
+                }
+            }
+        }
+
     }
     private IEnumerator BlinkEnemy(SpriteRenderer spriteRenderer)
     {

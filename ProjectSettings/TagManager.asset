@@ -12,6 +12,8 @@ TagManager:
   - character
   - vcam1
   - PlayerAttack
+  - GameStatus
+  - Retry
   layers:
   - Default
   - TransparentFX
