@@ -43272,43 +43272,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: spawnTimes.Array.data[0]
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: spawnTimes.Array.data[1]
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: spawnTimes.Array.data[2]
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: spawnTimes.Array.data[3]
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: spawnTimes.Array.data[4]
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: totalEnemiesPerWave.Array.data[0]
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: totalEnemiesPerWave.Array.data[1]
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: totalEnemiesPerWave.Array.data[2]
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: totalEnemiesPerWave.Array.data[3]
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1946230002337079638, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: totalEnemiesPerWave.Array.data[4]
-      value: 1
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4935590540858574458, guid: 7e363d837f3b55b4b86ecb0954b612a4, type: 3}
       propertyPath: m_LocalPosition.x

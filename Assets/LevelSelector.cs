@@ -11,40 +11,32 @@ public class LevelSelector : MonoBehaviour
     void Start()
     {
         // Get the player's progress from PlayerPrefs
-        int level1Completed = PlayerPrefs.GetInt("Level1Completed", 0);  // Default to 0 if not set
+        int level1Completed = PlayerPrefs.GetInt("Level1Completed", 0);
 
         // Check if the level is locked
         if (level == 2 && level1Completed == 0)
         {
-            // Display the lock image and disable the button if Level 2 is locked
             lockImage.SetActive(true);
-            levelButton.interactable = false; // Disable the button for Level 2
-        }
-        else if (level == 3 && level1Completed == 0)
-        {
-            // Display the lock image and disable the button for Level 3 if Level 1 isn't completed
-            lockImage.SetActive(true);
-            levelButton.interactable = false; // Disable the button for Level 3
-        }
+            levelButton.interactable = false;
+        } 
         else
         {
-            // Otherwise, hide the lock image and enable the button for this level
             lockImage.SetActive(false);
-            levelButton.interactable = true;  // Enable the button for this level
+            levelButton.interactable = true;
         }
     }
 
     public void OpenScene()
     {
         // Check if the level is accessible
-        if (level == 2 || (level == 3 && PlayerPrefs.GetInt("Level1Completed", 0) == 1))
+        if (level == 1 || (level == 2 && PlayerPrefs.GetInt("Level1Completed", 0) == 1))
         {
             // Level 1 or Level 2 (if Level 1 completed)
-            if (level == 2)
+            if (level == 1)
             {
                 PlayerPrefs.SetString("LoadScene", "ShooterScenes");
             }
-            else if (level == 3)
+            else if (level == 2)
             {
                 PlayerPrefs.SetString("LoadScene", "Level 2");
             }
