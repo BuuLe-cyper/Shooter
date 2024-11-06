@@ -11,18 +11,24 @@ public class LevelSelector : MonoBehaviour
     void Start()
     {
         // Get the player's progress from PlayerPrefs
-        int level1Completed = PlayerPrefs.GetInt("Level1Completed", 0);
+        int level1Completed = PlayerPrefs.GetInt("Level1Completed", 0);  // Default to 0 if not set
 
-        // Check if the level is locked (i.e., Level 2 should be locked if Level 1 is not completed)
-        if (level == 3 && level1Completed == 0)
+        // Check if the level is locked
+        if (level == 2 && level1Completed == 0)
         {
             // Display the lock image and disable the button if Level 2 is locked
             lockImage.SetActive(true);
             levelButton.interactable = false; // Disable the button for Level 2
         }
+        else if (level == 3 && level1Completed == 0)
+        {
+            // Display the lock image and disable the button for Level 3 if Level 1 isn't completed
+            lockImage.SetActive(true);
+            levelButton.interactable = false; // Disable the button for Level 3
+        }
         else
         {
-            // Otherwise, hide the lock image and enable the button
+            // Otherwise, hide the lock image and enable the button for this level
             lockImage.SetActive(false);
             levelButton.interactable = true;  // Enable the button for this level
         }
@@ -30,21 +36,20 @@ public class LevelSelector : MonoBehaviour
 
     public void OpenScene()
     {
-        // Log the level to check which scene is being requested
-        Debug.Log("Opening Scene: Level " + level.ToString());
-
         // Check if the level is accessible
         if (level == 2 || (level == 3 && PlayerPrefs.GetInt("Level1Completed", 0) == 1))
         {
+            // Level 1 or Level 2 (if Level 1 completed)
             if (level == 2)
             {
-                SceneManager.LoadScene("ShooterScenes");
+                PlayerPrefs.SetString("LoadScene", "ShooterScenes");
             }
             else if (level == 3)
             {
-                SceneManager.LoadScene("Level 2");
+                PlayerPrefs.SetString("LoadScene", "Level 2");
             }
+            SceneManager.LoadScene("CharScene");
         }
-
+        
     }
 }

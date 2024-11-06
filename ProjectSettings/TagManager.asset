@@ -66,3 +66,6 @@ TagManager:
   - name: ObjectCanMove2
     uniqueID: 335714771
     locked: 0
+  - name: New Layer 6
+    uniqueID: 726819667
+    locked: 0
