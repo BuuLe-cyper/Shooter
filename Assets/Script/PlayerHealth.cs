@@ -25,7 +25,6 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
         GameObject player = GameObject.FindGameObjectWithTag("character");
         spriteRenderer = player.GetComponent<SpriteRenderer>();
-
     }
 
     // Update is called once per frame

@@ -23,11 +23,9 @@ public class EnemyWeaponDamage : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (collision is CircleCollider2D && collision.gameObject.tag == "character" && collision.gameObject.name == "character2")
+        else if (collision.collider is CircleCollider2D && collision.gameObject.CompareTag("character") && collision.gameObject.name == "character2")
         {
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-
-            if (playerHealth != null)
+            if (collision.gameObject.TryGetComponent<PlayerHealth>(out var playerHealth))
             {
                 playerHealth.TakeDamage(damage);
             }
