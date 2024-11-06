@@ -6,6 +6,7 @@ public class GameOverManager : MonoBehaviour
     public GameObject gameOverScreen;
     public MonoBehaviour[] playerInputScripts;
 
+    private ScoreManagement scoreManagement;
     private bool isGameOver = false;
 
     void Start()
@@ -15,6 +16,14 @@ public class GameOverManager : MonoBehaviour
             Debug.LogError("Game Over screen reference not assigned in the inspector!");
         }
 
+        // Find the ScoreManagement object in the scene
+        scoreManagement = FindObjectOfType<ScoreManagement>();
+
+        // Check if scoreManagement is null
+        if (scoreManagement == null)
+        {
+            Debug.LogError("ScoreManagement instance not found in the scene. Ensure it is attached to a GameObject.");
+        }
     }
 
     public void ShowGameOverScreen(string textStatus, string textRetry)
@@ -57,12 +66,32 @@ public class GameOverManager : MonoBehaviour
 
     public void RestartGame()
     {
+        if (scoreManagement != null)
+        {
+            Debug.Log("Adding points to current stats...");
+            scoreManagement.AddPointsToCurrentStats();
+            scoreManagement.ResetPoint();
+        }
+        else
+        {
+            Debug.LogError("ScoreManagement is not available.");
+        }
         ResumeBackground();
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
     }
 
     public void GoToMainMenu()
     {
+        if (scoreManagement != null)
+        {
+            Debug.Log("Adding points to current stats...");
+            scoreManagement.AddPointsToCurrentStats();
+            scoreManagement.ResetPoint();
+        }
+        else
+        {
+            Debug.LogError("ScoreManagement is not available.");
+        }
         ResumeBackground();
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
     }

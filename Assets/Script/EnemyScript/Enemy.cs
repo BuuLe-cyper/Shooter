@@ -9,10 +9,10 @@ public class Enemy : MonoBehaviour
     private float currentHealth;
     //public float damageMultiplier = 1.0f;
     public float damageToPlayer = 1.0f;
-    public static float totalScore = 0f;
+    //public static float totalScore = 0f;
     public int expEnemy = 10;
     private GameObject gameOverManager;
-
+    private ScoreManagement scoreManagement;
     public Animator animator;
     public AudioManager audioManager;
     private CharacterLevelManager characterLevelManager;
@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         characterLevelManager = GameObject.FindObjectOfType<CharacterLevelManager>();
+        scoreManagement = FindObjectOfType<ScoreManagement>();
     }
 
     public virtual void TakeDamage(float damage)
@@ -87,7 +88,7 @@ public class Enemy : MonoBehaviour
         isDead = true; // Mark the enemy as dead
 
         float scoreFromDeath = (maxHealth * damageToPlayer) / 10f;
-        Enemy.totalScore += scoreFromDeath;
+        scoreManagement.AddPoint(scoreFromDeath);
 
         if (audioManager != null)
         {
