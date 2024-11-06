@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: af84418b7a50b7f47800c96d4f201166
   - enabled: 1
+    path: Assets/Scenes/ShooterScenes.unity
+    guid: c6194936b06e45a4da0385b05331da54
+  - enabled: 0
     path: Assets/Scenes/Level 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
