@@ -127,30 +127,34 @@ public class CharacterLevelManager : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player") ?? GameObject.FindGameObjectWithTag("character");
         GameObject weapon = GameObject.FindGameObjectWithTag("PlayerAttack");
 
+        float damageWeaponUpgradeLevelStep = 0.1f;
         if (weapon != null)
         {
             CharacterWeaponDamage damageWeapon = weapon.GetComponent<CharacterWeaponDamage>();
             if (damageWeapon != null)
             {
-                damageWeapon.damage *= 1 + (0.1f * level);
+                damageWeapon.damage *= 1 + (damageWeaponUpgradeLevelStep * level);
             }
         }
 
         if (player != null)
         {
+            float speedLevelStep = 0.01f;
+            float summonCooldownTimeLevelStep = 0.5f;
+
             PlayerMove playerMove = player.GetComponent<PlayerMove>();
             if (playerMove != null)
             {
-                playerMove.moveSpeed *= 1 + (0.05f * level);
-                playerMove.summonCooldownTime = Mathf.Max(0, playerMove.summonCooldownTime - (0.5f * level));
+                playerMove.moveSpeed *= 1 + (speedLevelStep * level);
+                playerMove.summonCooldownTime = Mathf.Max(0, playerMove.summonCooldownTime - (summonCooldownTimeLevelStep * level));
                 playerMove.dragonWarriorDuration += 2 * level;
             }
 
             PlayerController2 playerController2 = player.GetComponent<PlayerController2>();
             if (playerController2 != null)
             {
-                playerController2.moveSpeed *= 1 + (0.05f * level);
-                playerController2.damage *= 1 + (0.1f * level);
+                playerController2.moveSpeed *= 1 + (speedLevelStep * level);
+                playerController2.damage *= 1 + (damageWeaponUpgradeLevelStep * level);
             }
         }
 
