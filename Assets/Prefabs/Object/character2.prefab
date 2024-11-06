@@ -245,9 +245,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08819144, y: 0.13172366}
+  m_Offset: {x: -0.058382884, y: 0.12360567}
   serializedVersion: 2
-  m_Radius: 0.1483112
+  m_Radius: 0.11091494
 --- !u!50 &8978400121246131051
 Rigidbody2D:
   serializedVersion: 4
@@ -379,7 +379,6 @@ MonoBehaviour:
   TimeBtwFire: 0.5
   TimeBtwFire1: 3
   bulletForce: 10
-  audioManager: {fileID: 0}
   damage: 10
 --- !u!114 &8911485925903224343
 MonoBehaviour:

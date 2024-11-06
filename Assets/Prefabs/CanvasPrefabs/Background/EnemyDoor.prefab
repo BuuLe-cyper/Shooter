@@ -232,7 +232,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5158182252147689582}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7f2f7378807df24690eadbfd56c688b, type: 3}
   m_Name: 
@@ -258,7 +258,7 @@ MonoBehaviour:
   - 15
   - 20
   - 30
-  totalEnemiesPerWave: 0a00000014000000280000003c00000064000000
+  totalEnemiesPerWave: 050000000a0000000f0000001400000028000000
 --- !u!1 &7993850339684189568
 GameObject:
   m_ObjectHideFlags: 0

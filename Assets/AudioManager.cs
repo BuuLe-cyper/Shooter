@@ -20,6 +20,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerHit;    
     public AudioClip zombieHit;
     public AudioClip background2;
+    public AudioClip LevelUp;
+    public AudioClip Victory;
+    public AudioClip GameOver;
+
+
 
     private void Start()
     {

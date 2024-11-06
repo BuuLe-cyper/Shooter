@@ -7,9 +7,12 @@ public class MainCanvasManager : MonoBehaviour
     public GameOverManager gameOverManager; // Reference to the GameOverManager
     private PlayerHealth playerHealth; // Reference to the PlayerHealth component
     private ScoreManagement scoreManagement;
+    private AudioManager audioManager; // Reference to AudioManager
+
 
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         scoreManagement = FindObjectOfType<ScoreManagement>();
         playerHealth = FindObjectOfType<PlayerHealth>();
 
@@ -28,11 +31,13 @@ public class MainCanvasManager : MonoBehaviour
     {
         if (playerHealth != null && playerHealth.health <= 0)
         {
-            gameOverManager.ShowGameOverScreen("Game Over", "Try Again"); // Show the Game Over screen
+            gameOverManager.ShowGameOverScreen("Game Over", "Try Again");
+            audioManager.PlaySFX(audioManager.GameOver);
         }
     }
     public void GameWin()
     {
+        audioManager.PlaySFX(audioManager.Victory);
         scoreManagement.AddWinPoints(1000);
         gameOverManager.ShowGameOverScreen("Victory", "Play Again");
         PlayerPrefs.SetInt("Level1Completed", 1);

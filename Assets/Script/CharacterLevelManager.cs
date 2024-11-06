@@ -17,6 +17,9 @@ public class CharacterLevelManager : MonoBehaviour
 
     private PlayerHealth playerHealth;
     private SpriteRenderer spriteRenderer;
+
+    private AudioManager audioManager; // Reference to AudioManager
+
     //private CharacterWeaponDamage attackDamage;
 
     private void Start()
@@ -33,6 +36,8 @@ public class CharacterLevelManager : MonoBehaviour
         //    player = GameObject.FindGameObjectWithTag("Player");
         //}
         //spriteRenderer = player.GetComponent<SpriteRenderer>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         expSlider.value = 0;
         UpdateLevelCharacterText();
     }
@@ -66,6 +71,7 @@ public class CharacterLevelManager : MonoBehaviour
         level++;
         experiencePoints = 0;
         experienceThreshold += experienceLevelUpStep;
+        audioManager.PlaySFX(audioManager.LevelUp);
 
         playerHealth.AddHealth(10);
 
